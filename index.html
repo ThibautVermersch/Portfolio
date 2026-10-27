@@ -1,72 +1,184 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Vermersch Thibaut</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    
-    <header>
-        <nav class="navbar">
-            <a href="#" class="nav-link active">Accueil</a>
-            <a href="#" class="nav-link">Projets</a>
-            <a href="#" class="nav-link">Parcours</a>
-            <a href="#" class="nav-link">Contact</a>
-        </nav>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio de Vermersch Thibaut</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/main.js" defer></script>
+    </head>
+    <body>
         
-        <div class="header-control">
-            <div class="language">
-                <button type="button" class="language-button-active">FR</button>
-                <button type="button" class="language-button">EN</button>
+        <header>
+    <nav class="navbar">
+        <a href="#" class="nav-link active" data-i18n="nav_home">Profil</a>
+        <a href="#" class="nav-link" data-i18n="nav_projects">Projets</a>
+        <a href="#" class="nav-link" data-i18n="nav_about">Parcours</a>
+        <a href="#" class="nav-link" data-i18n="nav_contact">Contact</a>
+    </nav>
+            
+            <div class="header-control">
+                <div class="language">
+                    <span class="lang-indicator"></span>
+                    <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <button type="button" class="theme">
+                    <span class="icon">☀️</span>
+                    <span class="theme-text" data-i18n="theme_text">Clair</span>
+                </button>
             </div>
-            <button type="button" class="theme">
-                <span class="icon">☀️</span>
-                <span>Clair</span>
-            </button>
-        </div>
-    </header>
-    
-    <section class="main-page">
-        <div class="left-player">
-            <div class="glow"></div>
-            <div class="vinyle-orbit">
-                <button type="button" class="vinyle-project">Projets</button>
-                <button type="button" class="vinyle-parcours">Parcours</button>
-                <button type="button" class="vinyle-contact">Contact</button>
+        </header>
+        
+        <section class="main-page">
+            <div class="left-player">
+    <div class="vinyle-orbit">
+        <!-- Pastilles satellites -->
+        <button class="vinyle-project" data-i18n="orbit_projects">Projets</button>
+        <button class="vinyle-parcours" data-i18n="orbit_about">Parcours</button>
+        <button class="vinyle-contact" data-i18n="orbit_contact">Contact</button>
+        
 
-                <div class="vinyle-center">
-                    <button type="button" class="play-button" aria-label="Lancer la lecture">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#000000" style="margin-left: 3px;">
-                            <polygon points="6,4 20,12 6,20" />
-                        </svg>
-                    </button>
+        <!-- Disque vinyle central -->
+        <div class="vinyle-center">
+            <!-- Ce calque contient les traits blancs et tourne -->
+            <div class="vinyle-grooves"></div>
+            
+            <!-- Le bouton Play reste fixe -->
+            <button type="button" class="play-button" aria-label="Lire la musique">
+                <span class="play-icon">▶</span>
+            </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="right-content">
-            <h1 class="name">
-                Vermersch Thibaut
-            </h1>
-            <p class="description">
-                Développeur web en formation, je crée des expérience interactives autant harmonieuses techniquement que visuellement
-            </p>
-            <p class="status">
-                Recherche d'un stage de 8 à 10 semaines début avril 2027
-            </p>
             
-            <div class="cv-div">
-                <a href="assets/docs/CV Thibaut Vermersch.pdf" target="_blank" class="btn-cv btn-view">
-                    <span class="icon">👁️</span> Aperçu du CV
-                </a>
-                <a href="assets/docs/CV Thibaut Vermersch.pdf" download="CV_Vermersch_Thibaut.pdf" class="btn-cv btn-download">
-                    <span class="icon">📥</span> Télécharger le CV
-                </a>
+            <div class="right-content">
+                <h1 class="name">
+                    Vermersch Thibaut
+                </h1>
+                <p class="description" data-i18n="hero_desc">
+                    Développeur web en formation, je crée des expérience interactives autant harmonieuses techniquement que visuellement.
+                </p>
+                <p class="status" data-i18n="hero_status">
+                    Recherche d'un stage de 8 à 10 semaines début avril 2027.
+                </p>
+                
+                <div class="cv-div">
+                    <button type="button" class="btn-cv" id="btn-preview-cv">
+                        <span class="btn-icon">👁️</span>
+                        <span data-i18n="btn_preview">Aperçu du CV</span>
+                    </button>
+                    <a href="assets/docs/CV Thibaut Vermersch.pdf" download class="btn-cv">
+                        <span class="btn-icon">📥</span>
+                        <span data-i18n="btn_download">Télécharger le CV</span>
+                    </a>
+                </div>
             </div>
+        </section>
+        
+        
+        <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-window">
+        
+        <!-- En-tête : Onglets internes + Bouton fermer -->
+        <div class="modal-header">
+            <div class="modal-tabs">
+                <button type="button" class="tab-btn active" data-tab="profil" data-i18n="tab_profile">01. Profil</button>
+                <button type="button" class="tab-btn" data-tab="projets" data-i18n="tab_projects">02. Projets</button>
+                <button type="button" class="tab-btn" data-tab="cv" data-i18n="tab_cv">03. CV</button>
+                <button type="button" class="tab-btn" data-tab="parcours" data-i18n="tab_about">04. Parcours</button>
+                <button type="button" class="tab-btn" data-tab="contact" data-i18n="tab_contact">05. Contact</button>
+            </div>
+            <button type="button" class="modal-close-btn" id="modal-close">&times;</button>
         </div>
-    </section>
-    
-</body>
-</html>
+
+        <!-- Contenu dynamique des onglets -->
+        <div class="modal-body">
+            <!-- ONGLET 01 : PROFIL -->
+            <div class="tab-content active" id="tab-profil">
+                <div class="profile-top">
+                    <div class="terminal-badge">
+                        <div class="terminal-content">
+                            <span>&gt; _</span>
+                            <p>Courcelles-lès-Lens, France</p>
+                        </div>
+                    </div>
+
+                    <!-- C'est cette partie qui doit contenir ton nom, texte et tags -->
+                    <div class="profile-intro">
+                        <span class="status-pill" data-i18n="modal_status">Étudiant BUT2 Informatique</span>
+                        <h2>Thibaut Vermersch</h2>
+                        <p data-i18n="modal_bio">
+                            Passionné par le développement d'applications logicielles, web et l'architecture de code propre.
+                            Je conçois des projets rigoureux et ergonomiques pensés pour durer.
+                        </p>
+                        <div class="tech-tags">
+                            <span>Java</span>
+                            <span>PHP / Laravel</span>
+                            <span>PostgreSQL</span>
+                            <span>Python / Flask</span>
+                            <span>Linux</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">📐</span>
+                        <h3 data-i18n="feat_arch_title">Architecture Robuste</h3>
+                        <p data-i18n="feat_arch_desc">Code propre, orienté objet, typé et respectant les patrons de conception.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h3 data-i18n="feat_perf_title">Performances & BDD</h3>
+                        <p data-i18n="feat_perf_desc">Modélisation SQL rigoureuse, requêtes optimisées et gestion système Linux.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">✨</span>
+                        <h3 data-i18n="feat_ui_title">UI & Micro-interactions</h3>
+                        <p data-i18n="feat_ui_desc">Interfaces fluides, transitions soignées et design centré utilisateur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ONGLET 02 : PROJETS -->
+            <div class="tab-content" id="tab-projets">
+                <h2 data-i18n="projects_title">Mes Projets</h2>
+                <p data-i18n="projects_desc">Retrouve ici FractaLens, PacMan, AnimeBox et mes autres réalisations.</p>
+            </div>
+
+            <!-- ONGLET 03 : CV -->
+            <div class="tab-content" id="tab-cv">
+                <div class="cv-preview-container">
+                    <iframe src="assets/docs/CV Thibaut Vermersch.pdf#toolbar=0&navpanes=0" class="cv-iframe" title="Aperçu du CV">
+                    </iframe>
+                </div>
+</div>
+
+            <!-- ONGLET 04 : Parcours (ID corrigé : tab-parcours) -->
+            <div class="tab-content" id="tab-parcours">
+                <h2 data-i18n="about_title">Mon Parcours</h2>
+                <p data-i18n="about_desc">IUT de Lens — BUT Informatique (2025-2027).</p>
+            </div>
+
+            <!-- ONGLET 05 : CONTACT -->
+            <div class="tab-content" id="tab-contact">
+                <h2 data-i18n="contact_title">Me contacter</h2>
+                <p data-i18n="contact_desc">Une proposition de stage ou un projet ? Écris-moi !</p>
+            </div>
+
+        </div>
+
+        <!-- Pied de fenêtre -->
+        <div class="modal-footer">
+            <span>Format Lossless • Stereo</span>
+            <button type="button" class="btn-close-text" id="modal-close-text" data-i18n="modal_close_btn">Fermer la vue</button>
+        </div>
+
+        </div>
+    </div>
+        
+        
+    </body>
+    </html>

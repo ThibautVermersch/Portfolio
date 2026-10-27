@@ -1,181 +1,308 @@
+    :root {
+        --bg-main: #0F0F11;
+        --text-main: #ffffff;
+        --text-muted: #94a3b8;
+        --btn-dark: #242528;
+        --ctrl-bg: #2e3138;
+        --btn-dark-hover: #2e3138;
+        --border-color: rgba(255, 255, 255, 0.15);
+        --primary-accent: #14B8A6;
+        --description-texte: #FAFAFA
+    }
 
-body{
-    background-color: #0F0F11;
-    color: white;
-    text-decoration: none;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        overflow-x: hidden;
+    }
+
+    body.light-theme {
+        --bg-main: #FAFAFA;
+        --border-color: #0F0F11;
+        --description-texte: #0F0F11
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 48px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .nav-link {
+        display: inline-block;
+        border-radius: 9999px;
+        background-color: var(--btn-dark);
+        color: #ffffff;
+        padding: 10px 24px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .nav-link:hover{
+        background-color: var(--primary-accent);
+        transform: scale(1.05);
+    }
+
+
+    .header-control {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+.language {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--ctrl-bg);
+  border: 1px solid #1e2430;
+  border-radius: 9999px;
+  padding: 3px;
+  width: 96px;
+  height: 38px;
+  box-sizing: border-box;
 }
 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 32px;
-    border-bottom: 0.15rem solid white ;
-}
-.navbar{
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-left: 300px;
+/* La goutte / le liquide qui glisse et s'étire */
+.lang-indicator {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  background-color: var(--primary-accent, #14b8a6);
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(20, 184, 166, 0.45);
+  pointer-events: none;
+  z-index: 1;
+
+  /* Transition fluide élastique (effet liquide / goutte) */
+  transition: transform 0.45s cubic-bezier(0.68, -0.4, 0.27, 1.4);
+  transform-origin: center;
 }
 
-.nav-link{
-    display: inline-block;
-    border-radius: 99999px;
-    background-color: #242528;
-    color: white;
-    padding: 8px 20px;
-    transition: transform 0.2s ease, background-color 0.4s ease;
-    text-decoration: none;
-    font-size: 20px;
+/* Quand l'anglais est actif : déplacement à droite */
+.language.is-en .lang-indicator {
+  transform: translateX(100%);
 }
 
-.nav-link:hover{
-    background-color: #14B8A6;
-    transform: scale(1.08);
+/* Les boutons transparents par-dessus l'indicateur */
+.language-button,
+.language-button-active {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent !important;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
 }
 
-.header-control{
-    display: flex;
-    align-items: center;
-    gap: 16px;
+/* Le texte actif passe en blanc/noir contrasté */
+.language-button-active {
+  color: var(--btn-dark);
 }
 
-.main-page{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 80px);
-    padding: 0 40px;
-    gap: 60px;
+.language-button:hover {
+  color: #ffffff;
 }
 
-.left-player, .right-content{
-    flex: 1;
-}
-
-.cv-div{
-    display: flex;
-    align-items: center;
-    margin-top: 40px;
-    justify-content: space-between;
-    
-}
-
-.btn-cv{
+.theme {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    height: 80px;
-    width: 242px;
-    border-radius: 25px;
-    background-color: #14B8A6;
-    color: #ffff;
-    text-decoration: none;
+    width: 120px;
+    height: 42px;
+    background-color: var(--ctrl-bg);
     border: none;
+    border-radius: 9999px;
+    padding: 4px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    justify-content: center;
-    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-    font-size: 20px;
-    font-weight: bold;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
-.btn-cv:hover {
-    background-color: #14B8A6;
-    transform: translateY(-2px);
-}
+    .theme:hover {
+        background-color: #383b42;
+        transform: translateY(-1px);
+    }
+
+    .theme .icon {
+        position: absolute;
+        left: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #000000;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2;
+    }
+
+    .theme-text {
+        position: absolute;
+        left: 14px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+        pointer-events: none;
+
+        transform: translateX(40px);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+    }
+
+    .main-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 85px);
+        padding: 0 60px;
+        gap: 80px;
+    }
 
 
-.left-player {
-    position: relative;
-    width: 520px;
-    height: 520px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .left-player {
+        position: relative;
+        width: 520px;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
 
+    .glow {
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(circle, rgba(20, 184, 166, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+    }
 
-.glow {
-    position: absolute;
-    top: -30px;
-    left: -30px;
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, #14b8a5a8 0%, transparent 70%);
+    .vinyle-orbit {
+        position: relative;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        border: 1px solid rgba(20, 184, 166, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .vinyle-center {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        background-color: #08090a;
+        border-radius: 50%;
+        border: 12px solid #16181d;
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+    }
+
+    .vinyle-grooves {
+        position: absolute;
+    inset: 0;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 2;
-}
+    transform-origin: center center;
+
+    /* 3 anneaux fins (1.5px) très nets et bien écartés vers l'extérieur */
+    background: radial-gradient(
+        circle at center,
+        transparent 0px,
+        transparent 62px,               /* Centre bien vide */
+        rgba(255, 255, 255, 0.8) 63px,  /* Sillon 1 */
+        transparent 64.5px,
+        transparent 80px,
+        rgba(255, 255, 255, 0.8) 81px,  /* Sillon 2 */
+        transparent 82.5px,
+        transparent 98px,
+        rgba(255, 255, 255, 0.8) 99px,  /* Sillon 3 */
+        transparent 100.5px
+    );
+
+    /* Découpe pour afficher deux arcs opposés et laisser respirer la zone du bouton */
+    -webkit-mask-image: conic-gradient(
+        from 40deg,
+        #000 0deg 75deg,
+        transparent 75deg 180deg,
+        #000 180deg 255deg,
+        transparent 255deg 360deg
+    );
+    mask-image: conic-gradient(
+        from 40deg,
+        #000 0deg 75deg,
+        transparent 75deg 180deg,
+        #000 180deg 255deg,
+        transparent 255deg 360deg
+    );
+    
+        animation: spinVinyleGrooves 8s linear infinite;
+        animation-play-state: paused; /* Reste immobile à sa position */
+        will-change: transform;
+    }
 
 
-.vinyle-orbit {
-    position: relative;
-    width: 380px;
-    height: 380px;
-    border-radius: 50%;
-    border: 1px solid rgba(20, 184, 166, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-}
+    /* Animation déclenchée par JS */
+    @keyframes spinVinyleGrooves {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+    }
 
-.vinyle-project,
-.vinyle-parcours,
-.vinyle-contact {
+    .vinyle-grooves.playing {
+    animation: spinVinyleGrooves 10s linear infinite;
+    }
+
+
+    .play-button {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background-color:#242528;
-    color: #ffffff;
-    border: none;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.25s ease, background-color 0.25s ease;
-    z-index: 5;
-    font-size: 20px;
-}
-
-.vinyle-project {
-    transform: translate(-50%, -50%) translateY(-190px) ;
-}
-
-.vinyle-project:hover {
-    transform: translate(-50%, -50%) translateY(-190px) scale(1.08);
-    background-color: #2e3138;
-}
-
-.vinyle-contact {
-    transform: translate(-50%, -50%) rotate(120deg) translateY(-190px) rotate(-120deg);
-}
-
-.vinyle-contact:hover {
-    transform: translate(-50%, -50%) rotate(120deg) translateY(-190px) rotate(-120deg) scale(1.08);
-    background-color: #2e3138;
-}
-
-.vinyle-parcours {
-    transform: translate(-50%, -50%) rotate(240deg) translateY(-190px) rotate(-240deg);
-}
-
-.vinyle-parcours:hover {
-    transform: translate(-50%, -50%) rotate(240deg) translateY(-190px) rotate(-240deg) scale(1.08);
-    background-color: #2e3138;
-}
-
-.play-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 58px;
-    height: 58px;
+    top: -8px;
+    right: -8px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     background-color: var(--primary-accent);
     border: none;
@@ -183,40 +310,426 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
     transition: transform 0.2s ease, background-color 0.2s ease;
-    z-index: 4;
-    background-color: #14B8A6;
-}
+    z-index: 10;
+    padding: 0; /* Évite tout décalage interne */
+    }
 
-.play-button:hover{
-    transform :scale(1.08);
-}
-.vinyle-center {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    background-color: #08090a;
-    border-radius: 50%;
+    .play-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        line-height: 1; /* Supprime l'espace vertical résiduel de la police */
+        color: #08090a;
+        margin: 0;      /* Supprime le décalage forcé */
+    }
+
+    /* Ajustement optique uniquement pour le triangle Play */
+    .play-button:not(.is-playing) .play-icon {
+    margin-left: 2px;
+    }
+
+    .play-button:hover {
+        transform: scale(1.1);
+        background-color: #0d9488;
+    }
+
+
+    .vinyle-project,
+    .vinyle-parcours,
+    .vinyle-contact {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        background-color: var(--btn-dark);
+        color: #ffffff;
+        border: none;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.25s ease, background-color 0.25s ease;
+        z-index: 5;
+    }
+
+    .vinyle-project {
+        transform: translate(-50%, -50%) translateY(-190px);
+    }
+    .vinyle-project:hover {
+        transform: translate(-50%, -50%) translateY(-190px) scale(1.08);
+        background-color: var(--btn-dark-hover);
+    }
+
+    .vinyle-contact {
+        transform: translate(-50%, -50%) rotate(120deg) translateY(-190px) rotate(-120deg);
+    }
+    .vinyle-contact:hover {
+        transform: translate(-50%, -50%) rotate(120deg) translateY(-190px) rotate(-120deg) scale(1.08);
+        background-color: var(--btn-dark-hover);
+    }
+
+    .vinyle-parcours {
+        transform: translate(-50%, -50%) rotate(240deg) translateY(-190px) rotate(-240deg);
+    }
+    .vinyle-parcours:hover {
+        transform: translate(-50%, -50%) rotate(240deg) translateY(-190px) rotate(-240deg) scale(1.08);
+        background-color: var(--btn-dark-hover);
+    }
+
+
+    .right-content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .name {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--primary-accent);
+        margin-bottom: 24px;
+        letter-spacing: -0.5px;
+    }
+
+    .description {
+        font-size: 20px;
+        line-height: 1.6;
+        color: var(--description-texte);
+        margin-bottom: 20px;
+    }
+
+    .status {
+        font-size: 18px;
+        line-height: 1.5;
+        color: var(--text-muted);
+        margin-bottom: 36px;
+    }
+
+    .cv-div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btn-cv {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        height: 56px; /* 56px est le standard UI pour un bouton ergonomique */
+        padding: 0 28px;
+        border-radius: 9999px;
+        background-color: var(--primary-accent);
+        color: #050505; /* Texte noir sur fond turquoise pour un contraste accessible */
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 16px;
+        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-cv:hover {
+        background-color: #0d9488;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(20, 184, 166, 0.35);
+    }
+
+    body.light-theme .vinyle-project,
+    body.light-theme .vinyle-parcours,
+    body.light-theme .vinyle-contact,
+    body.light-theme .nav-link,
+    body.light-theme .language-button,
+    body.light-theme .theme {
+        color: var(--text-main);
+    }
+
+    /* Quand le thème clair est actif, on inverse la direction du bouton */
+    body.light-theme .theme {
+        flex-direction: row-reverse;
+    padding: 6px 10px 6px 18px; /* Inverse les marges internes pour garder un rendu équilibré */
+    }
+
+    body.light-theme .theme .icon {
+        transform: translateX(78px) rotate(360deg);
+    }
+
+    body.light-theme .theme-text {
+        transform: translateX(0);
+        color: var(--text-main);
+    }
+
+
+    .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 3;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+    }
+
+    .modal-window {
+    width: 90%;
+    max-width: 960px;
+    background-color: #11141a;
+    border: 1px solid #1e2430;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    padding: 24px 32px;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.open .modal-window {
+    transform: scale(1);
+    }
+
+    /* Header & Onglets */
+    .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 24px;
+    }
+
+    .modal-tabs {
+    background-color: #0b0d11;
+    padding: 4px;
+    border-radius: 9999px;
+    display: flex;
+    gap: 6px;
+    }
+
+    .tab-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    }
+
+    .tab-btn.active {
+    background-color: #242a36;
+    color: #ffffff;
+    }
+
+    .modal-close-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1e2430;
+    border: none;
+    color: #94a3b8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+    }
+
+    .modal-close-btn:hover {
+    background-color: #333d52;
+    color: #fff;
+    }
+
+    /* Contenu */
+    .tab-content {
+    display: none;
+    }
+
+    .tab-content.active {
+    display: block;
+    }
+
+    .profile-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    margin-bottom: 24px;
+    }
+
+    .terminal-badge {
+    width: 130px;
+    height: 130px;
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #f59e0b, #ec4899, #3b82f6) 1;
+    background-color: #0b0d11;
+    padding: 12px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    }
+
+    .terminal-content span {
+    font-size: 26px;
+    font-family: monospace;
+    color: #f59e0b;
+    }
+
+    .terminal-content p {
+    font-size: 9px;
+    color: #94a3b8;
+    margin-top: 4px;
+    }
+
+
+    .profile-intro h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 6px 0 10px;
+    }
+
+    .status-pill {
+    font-size: 12px;
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    font-family: monospace;
+    }
+
+    .profile-intro p {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    }
+
+    .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    }
+
+    .tech-tags span {
+    background-color: #0b0d11;
+    color: #e2e8f0;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: monospace;
+    border-radius: 4px;
+    }
+
+    /* Grille 3 colonnes */
+    .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+    }
+
+    .feature-card {
+    background-color: #0b0d11;
+    border: 1px solid #1a202c;
+    border-radius: 10px;
+    padding: 16px;
+    }
+
+    .feature-card h3 {
+    font-size: 14px;
+    margin: 8px 0 4px;
+    color: #f1f5f9;
+    }
+
+    .feature-card p {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.4;
+    }
+
+    /* Footer */
+    .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 1px solid #1e2430;
+    font-size: 11px;
+    color: #64748b;
+    font-family: monospace;
+    }
+
+    .btn-close-text {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    }
+
+    .btn-close-text:hover {
+    color: #fff;
+    }
+
+    /* Animation de rotation infinie */
+    @keyframes spinVinyle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+    }
+
+    /* Classe ajoutée en JS quand la musique est active */
+.vinyle-center.playing {
+    animation: spinVinyle 4s linear infinite;
+}
+    
+    
+    
+.cv-preview-container {
+    width: 100%;
+    height: 65vh; /* Hauteur confortable dans la popup */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #1e2430;
+    background-color: #0b0d11;
+    margin-top: 10px;
 }
 
-.name{
-    font-size: 48px;
-    font-weight: bold;
-    color: #14B8A6;
+.cv-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
-.description{
-    font-size: 40px;
-}
-
-.status{
-    font-size: 40px;
-}
-
-.right-content{
-    margin-right: 50px;
+/* Harmonisation du bouton aperçu (pour garder le même look que le lien <a>) */
+button.btn-cv {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
 }
