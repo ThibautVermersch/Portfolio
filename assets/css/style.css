@@ -1,4 +1,4 @@
-    :root {
+:root {
         --bg-main: #0F0F11;
         --text-main: #ffffff;
         --text-muted: #94a3b8;
@@ -7,7 +7,14 @@
         --btn-dark-hover: #2e3138;
         --border-color: rgba(255, 255, 255, 0.15);
         --primary-accent: #14B8A6;
-        --description-texte: #FAFAFA
+        --description-texte: #FAFAFA;
+        /* Unité de taille du lecteur vinyle : 1px au maximum, rétrécit sur petits écrans */
+        --u: min(1px, (100vw - 32px) / 500);
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
     }
 
     * {
@@ -33,7 +40,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 16px 48px;
+        padding: 16px clamp(16px, 4vw, 48px);
+        flex-wrap: wrap;
+        gap: 12px;
         border-bottom: 1px solid var(--border-color);
     }
 
@@ -185,15 +194,18 @@
         align-items: center;
         justify-content: center;
         min-height: calc(100vh - 85px);
-        padding: 0 60px;
-        gap: 80px;
+        min-height: calc(100dvh - 85px);
+        padding: 24px clamp(16px, 4vw, 60px);
+        gap: clamp(32px, 5vw, 80px);
     }
 
 
+    /* Tout le lecteur vinyle est dimensionné avec --u (défini dans :root) :
+       1 unité = 1px sur grand écran, puis il rétrécit proportionnellement. */
     .left-player {
         position: relative;
-        width: 520px;
-        height: 520px;
+        width: calc(520 * var(--u));
+        height: calc(520 * var(--u));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -213,9 +225,10 @@
     }
 
     .vinyle-orbit {
+        --r: calc(190 * var(--u)); /* rayon de l'orbite des pastilles */
         position: relative;
-        width: 380px;
-        height: 380px;
+        width: calc(380 * var(--u));
+        height: calc(380 * var(--u));
         border-radius: 50%;
         border: 1px solid rgba(20, 184, 166, 0.4);
         display: flex;
@@ -226,11 +239,11 @@
 
     .vinyle-center {
         position: relative;
-        width: 250px;
-        height: 250px;
+        width: calc(250 * var(--u));
+        height: calc(250 * var(--u));
         background-color: #08090a;
         border-radius: 50%;
-        border: 12px solid #16181d;
+        border: max(6px, calc(12 * var(--u))) solid #16181d;
         box-shadow: 0 0 35px rgba(0, 0, 0, 0.85);
         display: flex;
         align-items: center;
@@ -240,42 +253,42 @@
 
     .vinyle-grooves {
         position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    pointer-events: none;
-    transform-origin: center center;
+        inset: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        transform-origin: center center;
 
-    /* 3 anneaux fins (1.5px) très nets et bien écartés vers l'extérieur */
-    background: radial-gradient(
-        circle at center,
-        transparent 0px,
-        transparent 62px,               /* Centre bien vide */
-        rgba(255, 255, 255, 0.8) 63px,  /* Sillon 1 */
-        transparent 64.5px,
-        transparent 80px,
-        rgba(255, 255, 255, 0.8) 81px,  /* Sillon 2 */
-        transparent 82.5px,
-        transparent 98px,
-        rgba(255, 255, 255, 0.8) 99px,  /* Sillon 3 */
-        transparent 100.5px
-    );
+        /* 3 anneaux fins, rayons proportionnels à la taille du disque */
+        background: radial-gradient(
+            circle at center,
+            transparent 0px,
+            transparent calc(62 * var(--u)),
+            rgba(255, 255, 255, 0.8) calc(63 * var(--u)),
+            transparent calc(64.5 * var(--u)),
+            transparent calc(80 * var(--u)),
+            rgba(255, 255, 255, 0.8) calc(81 * var(--u)),
+            transparent calc(82.5 * var(--u)),
+            transparent calc(98 * var(--u)),
+            rgba(255, 255, 255, 0.8) calc(99 * var(--u)),
+            transparent calc(100.5 * var(--u))
+        );
 
-    /* Découpe pour afficher deux arcs opposés et laisser respirer la zone du bouton */
-    -webkit-mask-image: conic-gradient(
-        from 40deg,
-        #000 0deg 75deg,
-        transparent 75deg 180deg,
-        #000 180deg 255deg,
-        transparent 255deg 360deg
-    );
-    mask-image: conic-gradient(
-        from 40deg,
-        #000 0deg 75deg,
-        transparent 75deg 180deg,
-        #000 180deg 255deg,
-        transparent 255deg 360deg
-    );
-    
+        /* Découpe pour afficher deux arcs opposés et laisser respirer la zone du bouton */
+        -webkit-mask-image: conic-gradient(
+            from 40deg,
+            #000 0deg 75deg,
+            transparent 75deg 180deg,
+            #000 180deg 255deg,
+            transparent 255deg 360deg
+        );
+        mask-image: conic-gradient(
+            from 40deg,
+            #000 0deg 75deg,
+            transparent 75deg 180deg,
+            #000 180deg 255deg,
+            transparent 255deg 360deg
+        );
+
         animation: spinVinyleGrooves 8s linear infinite;
         animation-play-state: paused; /* Reste immobile à sa position */
         will-change: transform;
@@ -284,36 +297,36 @@
 
     /* Animation déclenchée par JS */
     @keyframes spinVinyleGrooves {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     .vinyle-grooves.playing {
-    animation: spinVinyleGrooves 10s linear infinite;
+        animation: spinVinyleGrooves 10s linear infinite;
     }
 
 
     .play-button {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background-color: var(--primary-accent);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    z-index: 10;
-    padding: 0; /* Évite tout décalage interne */
+        position: absolute;
+        top: calc(-8 * var(--u));
+        right: calc(-8 * var(--u));
+        width: max(44px, calc(54 * var(--u))); /* cible tactile minimale 44px */
+        height: max(44px, calc(54 * var(--u)));
+        border-radius: 50%;
+        background-color: var(--primary-accent);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        z-index: 10;
+        padding: 0; /* Évite tout décalage interne */
     }
 
     .play-icon {
@@ -330,7 +343,7 @@
 
     /* Ajustement optique uniquement pour le triangle Play */
     .play-button:not(.is-playing) .play-icon {
-    margin-left: 2px;
+        margin-left: 2px;
     }
 
     .play-button:hover {
@@ -345,14 +358,14 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 105px;
-        height: 105px;
+        width: calc(105 * var(--u));
+        height: calc(105 * var(--u));
         border-radius: 50%;
         background-color: var(--btn-dark);
         color: #ffffff;
         border: none;
         font-weight: 600;
-        font-size: 16px;
+        font-size: max(12px, calc(16 * var(--u)));
         cursor: pointer;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         transition: transform 0.25s ease, background-color 0.25s ease;
@@ -360,28 +373,29 @@
     }
 
     .vinyle-project {
-        transform: translate(-50%, -50%) translateY(-190px);
+        transform: translate(-50%, -50%) translateY(calc(var(--r) * -1));
     }
     .vinyle-project:hover {
-        transform: translate(-50%, -50%) translateY(-190px) scale(1.08);
+        transform: translate(-50%, -50%) translateY(calc(var(--r) * -1)) scale(1.08);
         background-color: var(--btn-dark-hover);
     }
 
     .vinyle-contact {
-        transform: translate(-50%, -50%) rotate(120deg) translateY(-190px) rotate(-120deg);
+        transform: translate(-50%, -50%) rotate(120deg) translateY(calc(var(--r) * -1)) rotate(-120deg);
     }
     .vinyle-contact:hover {
-        transform: translate(-50%, -50%) rotate(120deg) translateY(-190px) rotate(-120deg) scale(1.08);
+        transform: translate(-50%, -50%) rotate(120deg) translateY(calc(var(--r) * -1)) rotate(-120deg) scale(1.08);
         background-color: var(--btn-dark-hover);
     }
 
     .vinyle-parcours {
-        transform: translate(-50%, -50%) rotate(240deg) translateY(-190px) rotate(-240deg);
+        transform: translate(-50%, -50%) rotate(240deg) translateY(calc(var(--r) * -1)) rotate(-240deg);
     }
     .vinyle-parcours:hover {
-        transform: translate(-50%, -50%) rotate(240deg) translateY(-190px) rotate(-240deg) scale(1.08);
+        transform: translate(-50%, -50%) rotate(240deg) translateY(calc(var(--r) * -1)) rotate(-240deg) scale(1.08);
         background-color: var(--btn-dark-hover);
     }
+
 
 
     .right-content {
@@ -390,7 +404,7 @@
     }
 
     .name {
-        font-size: 52px;
+        font-size: clamp(32px, 7vw, 52px);
         font-weight: 800;
         color: var(--primary-accent);
         margin-bottom: 24px;
@@ -398,14 +412,14 @@
     }
 
     .description {
-        font-size: 20px;
+        font-size: clamp(15px, 2.2vw, 20px);
         line-height: 1.6;
         color: var(--description-texte);
         margin-bottom: 20px;
     }
 
     .status {
-        font-size: 18px;
+        font-size: clamp(14px, 2vw, 18px);
         line-height: 1.5;
         color: var(--text-muted);
         margin-bottom: 36px;
@@ -414,7 +428,8 @@
     .cv-div {
         display: flex;
         align-items: center;
-        gap: 20px;
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
     .btn-cv {
@@ -474,6 +489,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 16px;
     z-index: 1000;
     opacity: 0;
     pointer-events: none;
@@ -486,8 +502,12 @@
     }
 
     .modal-window {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-width: 960px;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
     background-color: #11141a;
     border: 1px solid #1e2430;
     border-radius: 20px;
@@ -509,6 +529,8 @@
     justify-content: center;
     position: relative;
     margin-bottom: 24px;
+    padding: 0 44px; /* réserve la place du bouton fermer */
+    flex-shrink: 0;
     }
 
     .modal-tabs {
@@ -517,6 +539,14 @@
     border-radius: 9999px;
     display: flex;
     gap: 6px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-tabs::-webkit-scrollbar {
+    display: none;
     }
 
     .tab-btn {
@@ -528,6 +558,8 @@
     padding: 6px 16px;
     border-radius: 9999px;
     cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
     transition: background-color 0.2s, color 0.2s;
     }
 
@@ -558,6 +590,23 @@
     .modal-close-btn:hover {
     background-color: #333d52;
     color: #fff;
+    }
+
+    /* Zone de contenu : c'est elle qui défile, l'en-tête et le pied restent visibles */
+    .modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 3px 4px 0 0;
+    }
+
+    .modal-body::-webkit-scrollbar {
+    width: 5px;
+    }
+    .modal-body::-webkit-scrollbar-thumb {
+    background: #1e2430;
+    border-radius: 4px;
     }
 
     /* Contenu */
@@ -610,8 +659,8 @@
 
     .status-pill {
     font-size: 12px;
-    background-color: rgba(245, 158, 11, 0.15);
-    color: #f59e0b;
+    background-color: #14b8a50a;
+    color: var(--primary-accent);
     padding: 2px 10px;
     border-radius: 9999px;
     font-family: monospace;
@@ -712,6 +761,7 @@
 .cv-preview-container {
     width: 100%;
     height: 65vh; /* Hauteur confortable dans la popup */
+    height: clamp(320px, 62dvh, 720px);
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #1e2430;
@@ -732,4 +782,649 @@ button.btn-cv {
     font-size: inherit;
     cursor: pointer;
     border: none;
+}
+
+
+
+/* Entête de la section projets */
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.projects-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.projects-counter {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-accent, #14b8a6);
+  font-family: monospace;
+}
+
+/* Grille 2 colonnes comme sur l'image */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-height: 58vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar discrète */
+.projects-grid::-webkit-scrollbar {
+  width: 5px;
+}
+.projects-grid::-webkit-scrollbar-thumb {
+  background: #1e2430;
+  border-radius: 4px;
+}
+
+/* Carte projet cliquable */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0d11;
+  border: 1px solid #1a202c;
+  border-radius: 14px;
+  padding: 20px;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* En-tête de carte */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-category {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-accent, #14b8a6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card-link-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #12161f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.project-card:hover .card-link-icon {
+  background-color: var(--primary-accent, #14b8a6);
+  color: #08090a;
+}
+
+/* Titre et description */
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 8px 0;
+}
+
+.card-description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0 0 18px 0;
+  flex-grow: 1;
+}
+
+/* Badges de technologies */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-tags span {
+  font-size: 11px;
+  font-family: monospace;
+  color: #cbd5e1;
+  background-color: #141822;
+  border: 1px solid #1e2532;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Responsive pour mobiles / petits écrans */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Entête Parcours */
+.parcours-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.parcours-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.timeline-cv-download {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-accent, #14b8a6);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-cv-download:hover {
+  opacity: 0.85;
+  transform: translateX(2px);
+}
+
+/* Timeline verticale */
+.timeline {
+  position: relative;
+  margin-left: 10px;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+/* Ligne continue */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 3px;
+  width: 2px;
+  background-color: #1e2430;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+/* Point lumineux */
+.timeline-dot {
+  position: absolute;
+  top: 5px;
+  left: -25px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-accent, #14b8a6);
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline-date {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--primary-accent, #14b8a6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.timeline-role {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.timeline-role .school {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.timeline-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 2px 0 0 0;
+  max-width: 720px;
+}
+
+/* Boîte des compétences techniques */
+.skills-box {
+  background-color: #0b0d11;
+  border: 1px solid #1a202c;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.skills-box-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.skill-category {
+  background-color: #11151f;
+  border: 1px solid #1e2532;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.skill-category p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #94a3b8;
+}
+
+.skill-category strong {
+  color: #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Entête Contact */
+.contact-header {
+  margin-bottom: 24px;
+}
+
+.contact-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.contact-subtitle {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 650px;
+}
+
+/* Grille des cartes de contact */
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Carte contact cliquable */
+.contact-card {
+  display: flex;
+  align-items: center;
+  background-color: #0b0d11;
+  border: 1px solid #1a202c;
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.contact-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: #12161f;
+  border: 1px solid #1e2532;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-accent, #14b8a6);
+  margin-right: 16px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-card:hover .contact-icon-wrapper {
+  background-color: var(--primary-accent, #14b8a6);
+  color: #08090a;
+}
+
+.contact-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+
+.contact-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+.contact-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.contact-arrow {
+  font-size: 16px;
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contact-card:hover .contact-arrow {
+  color: var(--primary-accent, #14b8a6);
+  transform: translate(2px, -2px);
+}
+
+/* Bandeau inférieur (Call-to-Action) */
+.contact-banner {
+  background-color: #11151f;
+  border: 1px solid #1e2532;
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-banner h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.contact-banner p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.btn-email-action {
+  background-color: var(--primary-accent, #14b8a6);
+  color: #08090a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-email-action:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .contact-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-email-action {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}
+
+/* Alignement du thème et du statut côte à côte */
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Style de base de l'étiquette */
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: monospace;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Puce lumineuse avant le texte */
+.project-status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* Statut : Terminé (Vert) */
+.project-status.status-completed {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.project-status.status-completed::before {
+  background-color: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
+}
+
+/* Statut : En cours (Ambre / Jaune-Orange) */
+.project-status.status-ongoing {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.project-status.status-ongoing::before {
+  background-color: #fbbf24;
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.7);
+}
+
+
+
+
+
+/* ==========================================================================
+   RESPONSIVE
+   Le lecteur vinyle se redimensionne seul grâce à --u (voir :root).
+   ========================================================================== */
+
+/* Petit lien de secours sous l'aperçu du CV (les PDF en iframe ne
+   s'affichent pas sur la plupart des navigateurs mobiles) */
+.cv-fallback {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-accent, #14b8a6);
+  text-decoration: none;
+}
+.cv-fallback:hover { text-decoration: underline; }
+
+/* Evite les débordements de textes longs (e-mail, noms de formation...) */
+.contact-card-info,
+.timeline-content,
+.card-title,
+.card-description { min-width: 0; overflow-wrap: anywhere; }
+
+.modal-footer { flex-shrink: 0; flex-wrap: wrap; gap: 8px; }
+.projects-header { flex-wrap: wrap; gap: 8px 16px; }
+.card-meta { flex-wrap: wrap; row-gap: 6px; }
+.projects-grid { max-height: none; overflow: visible; padding-right: 0; }
+
+/* --- Grand écran : le vinyle s'adapte un peu avant le passage en colonne --- */
+@media (min-width: 1025px) {
+  :root { --u: min(1px, 100vw / 1200); }
+}
+
+/* --- Tablette & mobile : une seule colonne --- */
+@media (max-width: 1024px) {
+  .main-page {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-height: auto;
+    padding: 32px 16px 48px;
+    gap: 32px;
+  }
+
+  .right-content {
+    flex: none;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .cv-div { justify-content: center; }
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Header empilé --- */
+@media (max-width: 860px) {
+  header {
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+
+  .navbar {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .header-control {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Fenêtre modale : mise en page compacte --- */
+@media (max-width: 760px) {
+  .modal-window { padding: 18px 16px; border-radius: 16px; }
+  .modal-header { margin-bottom: 16px; }
+
+  .profile-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .profile-intro { display: flex; flex-direction: column; align-items: center; }
+  .tech-tags { justify-content: center; }
+
+  .features-grid { grid-template-columns: 1fr; gap: 12px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .contact-banner { flex-direction: column; align-items: stretch; text-align: center; gap: 14px; }
+  .btn-email-action { width: 100%; justify-content: center; }
+}
+
+/* --- Smartphones --- */
+@media (max-width: 560px) {
+  .modal-overlay { padding: 8px; }
+  .modal-window {
+    padding: 14px 12px;
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+
+  .modal-header { padding: 0 40px 0 0; justify-content: flex-start; }
+  .tab-btn { font-size: 12px; padding: 8px 12px; }
+  .modal-close-btn { width: 36px; height: 36px; }
+
+  .profile-intro h2 { font-size: 24px; }
+  .timeline { margin-left: 4px; }
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .contact-card { padding: 14px; }
+  .contact-icon-wrapper { margin-right: 12px; }
+
+  .modal-footer { justify-content: center; text-align: center; }
+
+  /* Boutons CV empilés, pleine largeur */
+  .cv-div { flex-direction: column; align-items: stretch; width: 100%; }
+  .btn-cv { width: 100%; }
+}
+
+/* --- Très petits écrans (< 360px) --- */
+@media (max-width: 360px) {
+  .nav-link { padding: 8px 12px; font-size: 13px; }
+  .btn-cv { padding: 0 18px; font-size: 15px; }
 }

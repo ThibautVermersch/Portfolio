@@ -1,184 +1,418 @@
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio de Vermersch Thibaut</title>
-        <link rel="stylesheet" href="assets/css/style.css">
-        <script src="assets/js/main.js" defer></script>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Vermersch Thibaut</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
+    <meta name="description">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <a href="#" class="nav-link active" data-tab="profil" data-i18n="nav_home">Profil</a>
+            <a href="#" class="nav-link" data-tab="projets" data-i18n="nav_projects">Projets</a>
+            <a href="#" class="nav-link" data-tab="parcours" data-i18n="nav_about">Parcours</a>
+            <a href="#" class="nav-link" data-tab="contact" data-i18n="nav_contact">Contact</a>
+        </nav>
         
-        <header>
-    <nav class="navbar">
-        <a href="#" class="nav-link active" data-i18n="nav_home">Profil</a>
-        <a href="#" class="nav-link" data-i18n="nav_projects">Projets</a>
-        <a href="#" class="nav-link" data-i18n="nav_about">Parcours</a>
-        <a href="#" class="nav-link" data-i18n="nav_contact">Contact</a>
-    </nav>
-            
-            <div class="header-control">
-                <div class="language">
-                    <span class="lang-indicator"></span>
-                    <button type="button" class="lang-btn active" data-lang="fr">FR</button>
-                    <button type="button" class="lang-btn" data-lang="en">EN</button>
-                </div>
-                <button type="button" class="theme">
-                    <span class="icon">☀️</span>
-                    <span class="theme-text" data-i18n="theme_text">Clair</span>
-                </button>
+        <div class="header-control">
+            <div class="language">
+                <span class="lang-indicator"></span>
+                <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
             </div>
-        </header>
-        
-        <section class="main-page">
-            <div class="left-player">
-    <div class="vinyle-orbit">
-        <!-- Pastilles satellites -->
-        <button class="vinyle-project" data-i18n="orbit_projects">Projets</button>
-        <button class="vinyle-parcours" data-i18n="orbit_about">Parcours</button>
-        <button class="vinyle-contact" data-i18n="orbit_contact">Contact</button>
-        
-
-        <!-- Disque vinyle central -->
-        <div class="vinyle-center">
-            <!-- Ce calque contient les traits blancs et tourne -->
-            <div class="vinyle-grooves"></div>
-            
-            <!-- Le bouton Play reste fixe -->
-            <button type="button" class="play-button" aria-label="Lire la musique">
-                <span class="play-icon">▶</span>
+            <button type="button" class="theme">
+                <span class="icon">☀️</span>
+                <span class="theme-text" data-i18n="theme_text">Clair</span>
             </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="right-content">
-                <h1 class="name">
-                    Vermersch Thibaut
-                </h1>
-                <p class="description" data-i18n="hero_desc">
-                    Développeur web en formation, je crée des expérience interactives autant harmonieuses techniquement que visuellement.
-                </p>
-                <p class="status" data-i18n="hero_status">
-                    Recherche d'un stage de 8 à 10 semaines début avril 2027.
-                </p>
-                
-                <div class="cv-div">
-                    <button type="button" class="btn-cv" id="btn-preview-cv">
-                        <span class="btn-icon">👁️</span>
-                        <span data-i18n="btn_preview">Aperçu du CV</span>
+        </div>
+    </header>
+    
+    <section class="main-page">
+        <div class="left-player">
+            <div class="vinyle-orbit">
+                <!-- Pastilles satellites -->
+                <button class="vinyle-project" data-tab="projets" data-i18n="orbit_projects">Projets</button>
+                <button class="vinyle-parcours" data-tab="parcours" data-i18n="orbit_about">Parcours</button>
+                <button class="vinyle-contact" data-tab="contact" data-i18n="orbit_contact">Contact</button>
+
+                <!-- Disque vinyle central -->
+                <div class="vinyle-center">
+                    <!-- Ce calque contient les traits blancs et tourne -->
+                    <div class="vinyle-grooves"></div>
+                    
+                    <!-- Le bouton Play reste fixe -->
+                    <button type="button" class="play-button" aria-label="Lire la musique">
+                        <span class="play-icon">▶</span>
                     </button>
-                    <a href="assets/docs/CV Thibaut Vermersch.pdf" download class="btn-cv">
-                        <span class="btn-icon">📥</span>
-                        <span data-i18n="btn_download">Télécharger le CV</span>
-                    </a>
                 </div>
             </div>
-        </section>
+        </div>
         
-        
-        <div class="modal-overlay" id="modal-overlay">
+        <div class="right-content">
+            <h1 class="name">
+                Vermersch Thibaut
+            </h1>
+            <p class="description" data-i18n="hero_desc">
+                Développeur en quête d'harmonie entre le fond et la forme. Tout comme un morceau soigneusement mixé, je veille autant à la propreté de l'architecture logicielle sous le capot qu'à la fluidité et à l'élégance de l'interface présentée à l'utilisateur.
+            </p>
+            <p class="status" data-i18n="hero_status">
+                Recherche d'un stage de 8 à 10 semaines début avril 2027.
+            </p>
+            
+            <div class="cv-div">
+                <button type="button" class="btn-cv" id="btn-preview-cv">
+                    <span class="btn-icon">👁️</span>
+                    <span data-i18n="btn_preview">Aperçu du CV</span>
+                </button>
+                <a href="assets/docs/CV-Thibaut-Vermersch.pdf" download class="btn-cv">
+                    <span class="btn-icon">📥</span>
+                    <span data-i18n="btn_download">Télécharger le CV</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="modal-overlay" id="modal-overlay">
         <div class="modal-window">
         
-        <!-- En-tête : Onglets internes + Bouton fermer -->
-        <div class="modal-header">
-            <div class="modal-tabs">
-                <button type="button" class="tab-btn active" data-tab="profil" data-i18n="tab_profile">01. Profil</button>
-                <button type="button" class="tab-btn" data-tab="projets" data-i18n="tab_projects">02. Projets</button>
-                <button type="button" class="tab-btn" data-tab="cv" data-i18n="tab_cv">03. CV</button>
-                <button type="button" class="tab-btn" data-tab="parcours" data-i18n="tab_about">04. Parcours</button>
-                <button type="button" class="tab-btn" data-tab="contact" data-i18n="tab_contact">05. Contact</button>
+            <!-- En-tête : Onglets internes + Bouton fermer -->
+            <div class="modal-header">
+                <div class="modal-tabs">
+                    <button type="button" class="tab-btn active" data-tab="profil" data-i18n="tab_profile">01. Profil</button>
+                    <button type="button" class="tab-btn" data-tab="projets" data-i18n="tab_projects">02. Projets</button>
+                    <button type="button" class="tab-btn" data-tab="cv" data-i18n="tab_cv">03. CV</button>
+                    <button type="button" class="tab-btn" data-tab="parcours" data-i18n="tab_parcours">04. Parcours</button>
+                    <button type="button" class="tab-btn" data-tab="contact" data-i18n="tab_contact">05. Contact</button>
+                </div>
+                <button type="button" class="modal-close-btn" id="modal-close" aria-label="Fermer">&times;</button>
             </div>
-            <button type="button" class="modal-close-btn" id="modal-close">&times;</button>
+
+            <!-- Contenu dynamique des onglets -->
+            <div class="modal-body">
+                <!-- ONGLET 01 : PROFIL -->
+                <div class="tab-content active" id="tab-profil">
+                    <div class="profile-top">
+                        <div class="terminal-badge">
+                            <div class="terminal-content">
+                                <span>&gt; _</span>
+                                <p>Courcelles-lès-Lens, France</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-intro">
+                            <span class="status-pill" data-i18n="modal_status">Étudiant BUT2 Informatique</span>
+                            <h2>Thibaut Vermersch</h2>
+                            <p data-i18n="modal_bio">
+                                Passionné par le développement d'applications logicielles, web et l'architecture de code propre.
+                                Je conçois des projets rigoureux et ergonomiques pensés pour durer.
+                            </p>
+                            <div class="tech-tags">
+                                <span>Java</span>
+                                <span>PHP / Laravel</span>
+                                <span>PostgreSQL</span>
+                                <span>Python / Flask</span>
+                                <span>Linux</span>
+                                <span>Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">🎯</span>
+                            <h3 data-i18n="feat_arch_title">Objectif</h3>
+                            <p data-i18n="feat_arch_desc">Mission de 8 à 10 semaines à partir de début avril 2027 en développement.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📍</span>
+                            <h3 data-i18n="feat_perf_title">Mobilité</h3>
+                            <p data-i18n="feat_perf_desc">Véhiculé & Mobile. <br>
+                                Secteur Hauts-de-France (Lens, Lille, Arras, Douai, Seclin, Hénin-Beaumont).</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">✨</span>
+                            <h3 data-i18n="feat_ui_title">Atout</h3>
+                            <p data-i18n="feat_ui_desc">Autonome, Curieux, Persévérant. <br>
+                                Prise en main rapide des stacks techniques, veille active.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+<!-- ONGLET 02 : PROJETS -->
+<div class="tab-content" id="tab-projets">
+    <div class="projects-header">
+        <div>
+            <h2 class="projects-title" data-i18n="projects_title">Morceaux Choisis (Projets Phares)</h2>
         </div>
+        <span class="projects-counter" data-i18n="projects_counter">6 Projets Sélectionnés</span>
+    </div>
 
-        <!-- Contenu dynamique des onglets -->
-        <div class="modal-body">
-            <!-- ONGLET 01 : PROFIL -->
-            <div class="tab-content active" id="tab-profil">
-                <div class="profile-top">
-                    <div class="terminal-badge">
-                        <div class="terminal-content">
-                            <span>&gt; _</span>
-                            <p>Courcelles-lès-Lens, France</p>
-                        </div>
-                    </div>
-
-                    <!-- C'est cette partie qui doit contenir ton nom, texte et tags -->
-                    <div class="profile-intro">
-                        <span class="status-pill" data-i18n="modal_status">Étudiant BUT2 Informatique</span>
-                        <h2>Thibaut Vermersch</h2>
-                        <p data-i18n="modal_bio">
-                            Passionné par le développement d'applications logicielles, web et l'architecture de code propre.
-                            Je conçois des projets rigoureux et ergonomiques pensés pour durer.
-                        </p>
-                        <div class="tech-tags">
-                            <span>Java</span>
-                            <span>PHP / Laravel</span>
-                            <span>PostgreSQL</span>
-                            <span>Python / Flask</span>
-                            <span>Linux</span>
-                            <span>Git</span>
-                        </div>
-                    </div>
+    <div class="projects-grid">
+        <!-- 1. FractaLens -->
+        <a href="https://github.com/ThibautVermersch/Fractalens.git" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="card-top">
+                <div class="card-meta">
+                    <span class="card-category" data-i18n="cat_maths">JAVA • MATHS & GRAPHISME</span>
+                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
                 </div>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <span class="feature-icon">📐</span>
-                        <h3 data-i18n="feat_arch_title">Architecture Robuste</h3>
-                        <p data-i18n="feat_arch_desc">Code propre, orienté objet, typé et respectant les patrons de conception.</p>
-                    </div>
-                    <div class="feature-card">
-                        <span class="feature-icon">⚡</span>
-                        <h3 data-i18n="feat_perf_title">Performances & BDD</h3>
-                        <p data-i18n="feat_perf_desc">Modélisation SQL rigoureuse, requêtes optimisées et gestion système Linux.</p>
-                    </div>
-                    <div class="feature-card">
-                        <span class="feature-icon">✨</span>
-                        <h3 data-i18n="feat_ui_title">UI & Micro-interactions</h3>
-                        <p data-i18n="feat_ui_desc">Interfaces fluides, transitions soignées et design centré utilisateur.</p>
-                    </div>
+                <div class="card-link-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </div>
             </div>
-
-            <!-- ONGLET 02 : PROJETS -->
-            <div class="tab-content" id="tab-projets">
-                <h2 data-i18n="projects_title">Mes Projets</h2>
-                <p data-i18n="projects_desc">Retrouve ici FractaLens, PacMan, AnimeBox et mes autres réalisations.</p>
+            <h3 class="card-title">FractaLens</h3>
+            <p class="card-description" data-i18n="desc_fractalens">
+                Générateur de fractales (ensembles de Mandelbrot et Julia) développé avec Gradle, nombres complexes et patrons de conception (Strategy, Builder, Iterator).
+            </p>
+            <div class="card-tags">
+                <span>Java</span>
+                <span>Gradle</span>
+                <span>Design Patterns</span>
             </div>
+        </a>
 
-            <!-- ONGLET 03 : CV -->
-            <div class="tab-content" id="tab-cv">
-                <div class="cv-preview-container">
-                    <iframe src="assets/docs/CV Thibaut Vermersch.pdf#toolbar=0&navpanes=0" class="cv-iframe" title="Aperçu du CV">
-                    </iframe>
+        <!-- 2. AnimeBox -->
+        <a href="https://github.com/ThibautVermersch/animeList.git" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="card-top">
+                <div class="card-meta">
+                    <span class="card-category" data-i18n="cat_web">FULLSTACK • APPLICATION WEB</span>
+                    <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
                 </div>
+                <div class="card-link-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+            </div>
+            <h3 class="card-title">AnimeBox</h3>
+            <p class="card-description" data-i18n="desc_animebox">
+                Plateforme de suivi et de notation d'œuvres inspirée de Letterboxd, intégrant un système de collections, avis et filtrage dynamique.
+            </p>
+            <div class="card-tags">
+                <span>PHP</span>
+                <span>Laravel</span>
+                <span>PostgreSQL</span>
+            </div>
+        </a>
+
+        <!-- 3. PacMan Java -->
+        <a href="https://github.com/ThibautVermersch/PacMan.git" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="card-top">
+                <div class="card-meta">
+                    <span class="card-category" data-i18n="cat_game">JEU VIDÉO • POO</span>
+                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                </div>
+                <div class="card-link-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+            </div>
+            <h3 class="card-title">Pac-Man JavaFX</h3>
+            <p class="card-description" data-i18n="desc_pacman">
+                Recréation du jeu rétro PacMan, gestion des collisions et des déplacements des personnages.
+            </p>
+            <div class="card-tags">
+                <span>Java</span>
+                <span>JavaFX</span>
+                <span>POO</span>
+            </div>
+        </a>
+
+        <!-- 4. Cabinet Médical -->
+        <a href="https://github.com/ThibautVermersch/Application-Gestion-de-Cabinet-medical.git" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="card-top">
+                <div class="card-meta">
+                    <span class="card-category" data-i18n="cat_business">LOGICIEL METIER • GESTION</span>
+                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                </div>
+                <div class="card-link-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+            </div>
+            <h3 class="card-title">Gestion Cabinet Médical</h3>
+            <p class="card-description" data-i18n="desc_medical">
+                Application de gestion de rendez-vous, suivi des patients et prescriptions des médicaments.
+            </p>
+            <div class="card-tags">
+                <span>JavaFX</span>
+                <span>SQL</span>
+                <span>Architecture MVC</span>
+            </div>
+        </a>
+
+        <!-- 5. Générateur de Mots de Passe -->
+        <a href="https://github.com/ThibautVermersch/Generateur-de-mots-de-passe.git" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="card-top">
+                <div class="card-meta">
+                    <span class="card-category" data-i18n="cat_secu">SÉCURITÉ • UTILITAIRE</span>
+                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                </div>
+                <div class="card-link-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+            </div>
+            <h3 class="card-title" data-i18n="title_keygen">Générateur de mots de passe sécurisé</h3>
+            <p class="card-description" data-i18n="desc_keygen">
+                Générateur configurable de mots de passe sécurisés en Java avec la possibilité de choisir la longueur et d'exporter les mots de passe.
+            </p>
+            <div class="card-tags">
+                <span>Java</span>
+                <span>Sécurité</span>
+            </div>
+        </a>
+
+        <!-- 6. Portfolio Vinyle -->
+        <a href="https://github.com/ThibautVermersch/Portfolio.git" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="card-top">
+                <div class="card-meta">
+                    <span class="card-category" data-i18n="cat_front">FRONTEND • INTERACTION</span>
+                    <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
+                </div>
+                <div class="card-link-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+            </div>
+            <h3 class="card-title">Portfolio Vinyle</h3>
+            <p class="card-description" data-i18n="desc_portfolio">
+                Interface interactive inspirée d'une platine vinyle avec lecteur audio, thèmes persistants et internationalisation.
+            </p>
+            <div class="card-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+            </div>
+        </a>
+    </div>
 </div>
 
-            <!-- ONGLET 04 : Parcours (ID corrigé : tab-parcours) -->
-            <div class="tab-content" id="tab-parcours">
-                <h2 data-i18n="about_title">Mon Parcours</h2>
-                <p data-i18n="about_desc">IUT de Lens — BUT Informatique (2025-2027).</p>
-            </div>
+<!-- ONGLET 03 : CV -->
+<div class="tab-content" id="tab-cv">
+    <div class="cv-preview-container">
+        <iframe src="assets/docs/CV-Thibaut-Vermersch.pdf#toolbar=0&navpanes=0" class="cv-iframe" title="Aperçu du CV">
+        </iframe>
+    </div>
+    <a href="assets/docs/CV Thibaut Vermersch.pdf" target="_blank" rel="noopener noreferrer" class="cv-fallback" data-i18n="cv_open_new">Ouvrir le CV dans un nouvel onglet ↗</a>
+</div>
 
-            <!-- ONGLET 05 : CONTACT -->
-            <div class="tab-content" id="tab-contact">
-                <h2 data-i18n="contact_title">Me contacter</h2>
-                <p data-i18n="contact_desc">Une proposition de stage ou un projet ? Écris-moi !</p>
-            </div>
+<!-- ONGLET 04 : PARCOURS -->
+<div class="tab-content" id="tab-parcours">
+    <div class="parcours-header">
+        <h2 class="parcours-title" data-i18n="parcours_title">Chronologie & Formation</h2>
+    </div>
 
+    <div class="timeline">
+        <!-- 1. BUT Informatique -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2025 — 2028</span>
+                <h3 class="timeline-role"><span data-i18n="role_but">BUT Informatique</span> • <span class="school">IUT de Lens</span></h3>
+                <p class="timeline-desc" data-i18n="desc_but">
+                    Parcours axé sur la conception logicielle, le développement web, la modélisation de bases de données relationnelles et l'administration réseau/système Linux.
+                </p>
+            </div>
         </div>
 
-        <!-- Pied de fenêtre -->
-        <div class="modal-footer">
-            <span>Format Lossless • Stereo</span>
-            <button type="button" class="btn-close-text" id="modal-close-text" data-i18n="modal_close_btn">Fermer la vue</button>
-        </div>
-
+        <!-- 2. Bac STI2D -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-date">2022 — 2025</span>
+                <h3 class="timeline-role"><span data-i18n="role_bac">Baccalauréat STI2D (SIN)</span> • <span class="school">Lycée Louis Pasteur, Hénin-Beaumont</span></h3>
+                <p class="timeline-desc" data-i18n="desc_bac">
+                    Spécialité Systèmes d'Information et Numérique : initiation à la programmation, aux systèmes communicants, à l'électronique numérique et gestion de projets techniques.
+                </p>
+            </div>
         </div>
     </div>
-        
-        
-    </body>
-    </html>
+
+    <div class="skills-box">
+        <span class="skills-box-title" data-i18n="skills_box_title">COMPÉTENCES TECHNIQUES CLÉS</span>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <p><strong>Frontend :</strong> HTML5, CSS3, JavaScript</p>
+            </div>
+            <div class="skill-category">
+                <p><strong>Backend :</strong> Java (JavaFX), PHP (Laravel), Python (Flask)</p>
+            </div>
+            <div class="skill-category">
+                <p><strong data-i18n="skill_label_db">Base de données :</strong> PostgreSQL, SQL, Modélisation relationnelle</p>
+            </div>
+            <div class="skill-category">
+                <p><strong data-i18n="skill_label_tools">Outils & Système :</strong> Linux (Bash), Git / GitHub, Gradle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONGLET 05 : CONTACT -->
+<div class="tab-content" id="tab-contact">
+    <div class="contact-header">
+        <h2 class="contact-title" data-i18n="contact_heading">Restons en contact</h2>
+        <p class="contact-subtitle" data-i18n="contact_sub">
+            Actuellement ouvert aux opportunités pour mon stage de BUT2 (début avril 2027) ou pour échanger sur un projet technique.
+        </p>
+    </div>
+
+    <div class="contact-grid">
+        <!-- 1. Email direct -->
+        <a href="mailto:thibauthibaut08@gmail.com" class="contact-card">
+            <div class="contact-icon-wrapper">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="contact-card-info">
+                <span class="contact-label" data-i18n="contact_label_email">EMAIL DIRECT</span>
+                <span class="contact-value">thibauthibaut08@gmail.com</span>
+            </div>
+            <div class="contact-arrow">↗</div>
+        </a>
+
+        <!-- 2. LinkedIn -->
+        <a href="https://linkedin.com/in/thibaut-vermersch" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <div class="contact-icon-wrapper">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </div>
+            <div class="contact-card-info">
+                <span class="contact-label" data-i18n="contact_label_linkedin">RÉSEAU PROFESSIONNEL</span>
+                <span class="contact-value">LinkedIn / Thibaut Vermersch</span>
+            </div>
+            <div class="contact-arrow">↗</div>
+        </a>
+
+        <!-- 3. GitHub -->
+        <a href="https://github.com/ThibautVermersch" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <div class="contact-icon-wrapper">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </div>
+            <div class="contact-card-info">
+                <span class="contact-label" data-i18n="contact_label_github">CODE & DÉPÔTS</span>
+                <span class="contact-value" data-i18n="contact_value_github">GitHub / Projets & Démos</span>
+            </div>
+            <div class="contact-arrow">↗</div>
+        </a>
+    </div>
+
+    <!-- Encart d'action rapide -->
+    <div class="contact-banner">
+        <div>
+            <h3 data-i18n="contact_banner_title">Envie de discuter d'un stage ou d'une opportunité ?</h3>
+            <p data-i18n="contact_banner_desc">Je réponds généralement en moins de 24h.</p>
+        </div>
+        <a href="mailto:thibauthibaut08@gmail.com?subject=Prise%20de%20contact%20-%20Stage%20ou%20Projet" class="btn-email-action">
+            <span data-i18n="contact_banner_btn">Envoyer un message</span> →
+        </a>
+    </div>
+</div>
+
+            </div><!-- /modal-body -->
+
+            <!-- Pied de fenêtre -->
+            <div class="modal-footer">
+                <span>Format Lossless • Stereo</span>
+                <button type="button" class="btn-close-text" id="modal-close-text" data-i18n="modal_close_btn">Fermer la vue</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
