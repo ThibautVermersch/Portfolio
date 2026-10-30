@@ -325,7 +325,7 @@ document.querySelectorAll('.navbar .nav-link').forEach(link => {
     } else {
       const text = link.textContent.trim().toLowerCase();
       if (text.includes('projet') || text.includes('project')) openModal('projets');
-      else if (text.includes('parcour') || text.includes('about') || text.includes('cv')) openModal('cv');
+      else if (text.includes('parcours') || text.includes('about')) openModal('parcours');
       else if (text.includes('contact')) openModal('contact');
       else openModal('profil');
     }
@@ -338,7 +338,7 @@ const vinyleParcours = document.querySelector('.vinyle-parcours');
 const vinyleContact = document.querySelector('.vinyle-contact');
 
 if (vinyleProject) vinyleProject.addEventListener('click', () => openModal('projets'));
-if (vinyleParcours) vinyleParcours.addEventListener('click', () => openModal('cv'));
+if (vinyleParcours) vinyleParcours.addEventListener('click', () => openModal('parcours'));
 if (vinyleContact) vinyleContact.addEventListener('click', () => openModal('contact'));
 
 
