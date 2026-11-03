@@ -3,7 +3,7 @@
         --text-main: #ffffff;
         --text-muted: #94a3b8;
         --btn-dark: #242528;
-        --ctrl-bg: #2e3138;
+        --ctrl-bg: #242528;
         --btn-dark-hover: #2e3138;
         --border-color: rgba(255, 255, 255, 0.15);
         --primary-accent: #14B8A6;
@@ -89,7 +89,7 @@
   box-sizing: border-box;
 }
 
-/* La goutte / le liquide qui glisse et s'étire */
+/* Animation langue */
 .lang-indicator {
   position: absolute;
   top: 3px;
@@ -102,7 +102,7 @@
   pointer-events: none;
   z-index: 1;
 
-  /* Transition fluide élastique (effet liquide / goutte) */
+
   transition: transform 0.45s cubic-bezier(0.68, -0.4, 0.27, 1.4);
   transform-origin: center;
 }
@@ -510,8 +510,7 @@
     max-height: calc(100dvh - 32px);
     background-color: #11141a;
     border: 1px solid #1e2430;
-    border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    border-radius:10px;
     padding: 24px 32px;
     position: relative;
     transform: scale(0.95);
@@ -628,7 +627,7 @@
     .terminal-badge {
     width: 130px;
     height: 130px;
-    border: 2px solid;
+    border: 4px solid;
     border-image: linear-gradient(135deg, #f59e0b, #ec4899, #3b82f6) 1;
     background-color: #0b0d11;
     padding: 12px;
@@ -639,13 +638,12 @@
     }
 
     .terminal-content span {
-    font-size: 26px;
-    font-family: monospace;
+    font-size: 36px;
     color: #f59e0b;
     }
 
     .terminal-content p {
-    font-size: 9px;
+    font-size: 11px;
     color: #94a3b8;
     margin-top: 4px;
     }
@@ -662,8 +660,7 @@
     background-color: #14b8a50a;
     color: var(--primary-accent);
     padding: 2px 10px;
-    border-radius: 9999px;
-    font-family: monospace;
+    border-radius: 10px;
     }
 
     .profile-intro p {
@@ -684,7 +681,6 @@
     color: #e2e8f0;
     padding: 4px 10px;
     font-size: 12px;
-    font-family: monospace;
     border-radius: 4px;
     }
 
@@ -725,7 +721,6 @@
     border-top: 1px solid #1e2430;
     font-size: 11px;
     color: #64748b;
-    font-family: monospace;
     }
 
     .btn-close-text {
@@ -760,7 +755,7 @@
     
 .cv-preview-container {
     width: 100%;
-    height: 65vh; /* Hauteur confortable dans la popup */
+    height: 70vh;
     height: clamp(320px, 62dvh, 720px);
     border-radius: 12px;
     overflow: hidden;
@@ -776,7 +771,6 @@
     display: block;
 }
 
-/* Harmonisation du bouton aperçu (pour garder le même look que le lien <a>) */
 button.btn-cv {
     font-family: inherit;
     font-size: inherit;
@@ -805,7 +799,6 @@ button.btn-cv {
   font-size: 13px;
   font-weight: 600;
   color: var(--primary-accent, #14b8a6);
-  font-family: monospace;
 }
 
 /* Grille 2 colonnes comme sur l'image */
@@ -833,7 +826,7 @@ button.btn-cv {
   flex-direction: column;
   background-color: #0b0d11;
   border: 1px solid #1a202c;
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 20px;
   text-decoration: none;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -843,7 +836,6 @@ button.btn-cv {
 .project-card:hover {
   transform: translateY(-2px);
   border-color: rgba(20, 184, 166, 0.4);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* En-tête de carte */
@@ -865,12 +857,12 @@ button.btn-cv {
 .card-link-icon {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 20%;
   background-color: #12161f;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  color: var(--text-muted);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -890,7 +882,7 @@ button.btn-cv {
 .card-description {
   font-size: 13px;
   line-height: 1.5;
-  color: #94a3b8;
+  color: var(--text-muted);
   margin: 0 0 18px 0;
   flex-grow: 1;
 }
@@ -904,12 +896,11 @@ button.btn-cv {
 
 .card-tags span {
   font-size: 11px;
-  font-family: monospace;
   color: #cbd5e1;
   background-color: #141822;
   border: 1px solid #1e2532;
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: 2px;
 }
 
 /* Responsive pour mobiles / petits écrans */
@@ -986,7 +977,6 @@ button.btn-cv {
   height: 10px;
   border-radius: 50%;
   background-color: var(--primary-accent, #14b8a6);
-  box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
 }
 
 .timeline-content {
@@ -998,7 +988,6 @@ button.btn-cv {
 .timeline-date {
   font-size: 11px;
   font-weight: 700;
-  font-family: monospace;
   color: var(--primary-accent, #14b8a6);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -1028,7 +1017,7 @@ button.btn-cv {
 .skills-box {
   background-color: #0b0d11;
   border: 1px solid #1a202c;
-  border-radius: 14px;
+  border-radius: 8px;
   padding: 18px 20px;
 }
 
@@ -1050,7 +1039,7 @@ button.btn-cv {
 .skill-category {
   background-color: #11151f;
   border: 1px solid #1e2532;
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 10px 12px;
 }
 
@@ -1158,7 +1147,6 @@ button.btn-cv {
   letter-spacing: 0.06em;
   color: #64748b;
   text-transform: uppercase;
-  font-family: monospace;
 }
 
 .contact-value {
@@ -1251,20 +1239,12 @@ button.btn-cv {
   gap: 5px;
   font-size: 10px;
   font-weight: 600;
-  font-family: monospace;
   padding: 2px 8px;
   border-radius: 9999px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
-/* Puce lumineuse avant le texte */
-.project-status::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
 
 /* Statut : Terminé (Vert) */
 .project-status.status-completed {
