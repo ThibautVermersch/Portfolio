@@ -1,0 +1,141 @@
+
+/* Responsive pour mobiles / petits écrans */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .contact-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-email-action {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}
+
+/* --- Grand écran : le vinyle s'adapte un peu avant le passage en colonne --- */
+@media (min-width: 1025px) {
+  :root { --u: min(1px, 100vw / 1200); }
+}
+
+/* --- Tablette & mobile : une seule colonne --- */
+@media (max-width: 1024px) {
+  .main-page {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-height: auto;
+    padding: 32px 16px 48px;
+    gap: 32px;
+  }
+
+  .right-content {
+    flex: none;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .cv-div { justify-content: center; }
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Header empilé --- */
+@media (max-width: 860px) {
+  header {
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+
+  .navbar {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .header-control {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Fenêtre modale : mise en page compacte --- */
+@media (max-width: 760px) {
+  .modal-window { padding: 18px 16px; border-radius: 16px; }
+  .modal-header { margin-bottom: 16px; }
+
+  .profile-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .profile-intro { display: flex; flex-direction: column; align-items: center; }
+  .tech-tags { justify-content: center; }
+
+  .features-grid { grid-template-columns: 1fr; gap: 12px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .contact-banner { flex-direction: column; align-items: stretch; text-align: center; gap: 14px; }
+  .btn-email-action { width: 100%; justify-content: center; }
+}
+
+/* --- Smartphones --- */
+@media (max-width: 560px) {
+  .modal-overlay { padding: 8px; }
+  .modal-window {
+    padding: 14px 12px;
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+
+  .modal-header { padding: 0 40px 0 0; justify-content: flex-start; }
+  .tab-btn { font-size: 12px; padding: 8px 12px; }
+  .modal-close-btn { width: 36px; height: 36px; }
+
+  .profile-intro h2 { font-size: 24px; }
+  .timeline { margin-left: 4px; }
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .contact-card { padding: 14px; }
+  .contact-icon-wrapper { margin-right: 12px; }
+
+  .modal-footer { justify-content: center; text-align: center; }
+
+  /* Boutons CV empilés, pleine largeur */
+  .cv-div { flex-direction: column; align-items: stretch; width: 100%; }
+  .btn-cv { width: 100%; }
+}
+
+/* --- Très petits écrans (< 360px) --- */
+@media (max-width: 360px) {
+  .nav-link { padding: 8px 12px; font-size: 13px; }
+  .btn-cv { padding: 0 18px; font-size: 15px; }
+}
