@@ -1,0 +1,49 @@
+/* ==========================================================================
+   variables.css — Couleurs, polices, thèmes clair/sombre
+   ========================================================================== */
+
+:root {
+        --bg-main: #0F0F11;
+        --text-main: #ffffff;
+        --text-muted: #94a3b8;
+        --btn-dark: #242528;
+        --ctrl-bg: #242528;
+        --btn-dark-hover: #2e3138;
+        --border-color: rgba(255, 255, 255, 0.15);
+        --primary-accent: #14B8A6;
+        --description-texte: #FAFAFA;
+        --glow-rgb: 20, 184, 166; /* halo derrière le vinyle (orange). Turquoise : 20, 184, 166 */
+        /* Unité de taille du lecteur vinyle : 1px au maximum, rétrécit sur petits écrans */
+        --u: min(1px, (100vw - 32px) / 500);
+    }
+
+    body.light-theme {
+        --bg-main: #FAFAFA;
+        --border-color: #0F0F11;
+        --description-texte: #0F0F11
+    }
+
+/* --- Thème clair : surcharges des composants --- */
+    body.light-theme .vinyle-project,
+    body.light-theme .vinyle-parcours,
+    body.light-theme .vinyle-contact,
+    body.light-theme .nav-link,
+    body.light-theme .language-button,
+    body.light-theme .theme {
+        color: var(--text-main);
+    }
+
+    /* Quand le thème clair est actif, on inverse la direction du bouton */
+    body.light-theme .theme {
+        flex-direction: row-reverse;
+    padding: 6px 10px 6px 18px; /* Inverse les marges internes pour garder un rendu équilibré */
+    }
+
+    body.light-theme .theme .icon {
+        transform: translateX(78px) rotate(360deg);
+    }
+
+    body.light-theme .theme-text {
+        transform: translateX(0);
+        color: var(--text-main);
+    }
