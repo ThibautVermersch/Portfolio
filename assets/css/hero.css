@@ -1,0 +1,287 @@
+/* ==========================================================================
+   hero.css — Page d'accueil : vinyle, présentation, boutons CV
+   ========================================================================== */
+
+    .main-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 85px);
+        min-height: calc(100dvh - 85px);
+        padding: 24px clamp(16px, 4vw, 60px);
+        gap: clamp(32px, 5vw, 80px);
+    }
+
+    /* Tout le lecteur vinyle est dimensionné avec --u (défini dans :root) :
+       1 unité = 1px sur grand écran, puis il rétrécit proportionnellement. */
+    .left-player {
+        position: relative;
+        width: calc(520 * var(--u));
+        height: calc(520 * var(--u));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    /* Halo coloré derrière le vinyle (couleur réglable via --glow-rgb dans variables.css) */
+    .glow {
+        position: absolute;
+        top: calc(0 * var(--u));
+        left: calc(0 * var(--u));
+        width: calc(250 * var(--u));
+        height: calc(250 * var(--u));
+        background: radial-gradient(circle, rgba(var(--glow-rgb), 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .vinyle-orbit {
+        --r: calc(190 * var(--u)); /* rayon de l'orbite des pastilles */
+        position: relative;
+        width: calc(380 * var(--u));
+        height: calc(380 * var(--u));
+        border-radius: 50%;
+        border: 1px solid rgba(20, 184, 166, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .vinyle-center {
+        position: relative;
+        width: calc(250 * var(--u));
+        height: calc(250 * var(--u));
+        background-color: #08090a;
+        border-radius: 50%;
+        border: max(6px, calc(12 * var(--u))) solid #16181d;
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+    }
+
+    .vinyle-grooves {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        transform-origin: center center;
+
+        /* 3 anneaux fins, rayons proportionnels à la taille du disque */
+        background: radial-gradient(
+            circle at center,
+            transparent 0px,
+            transparent calc(62 * var(--u)),
+            rgba(255, 255, 255, 0.8) calc(63 * var(--u)),
+            transparent calc(64.5 * var(--u)),
+            transparent calc(80 * var(--u)),
+            rgba(255, 255, 255, 0.8) calc(81 * var(--u)),
+            transparent calc(82.5 * var(--u)),
+            transparent calc(98 * var(--u)),
+            rgba(255, 255, 255, 0.8) calc(99 * var(--u)),
+            transparent calc(100.5 * var(--u))
+        );
+
+        /* Découpe pour afficher deux arcs opposés et laisser respirer la zone du bouton */
+        -webkit-mask-image: conic-gradient(
+            from 40deg,
+            #000 0deg 75deg,
+            transparent 75deg 180deg,
+            #000 180deg 255deg,
+            transparent 255deg 360deg
+        );
+        mask-image: conic-gradient(
+            from 40deg,
+            #000 0deg 75deg,
+            transparent 75deg 180deg,
+            #000 180deg 255deg,
+            transparent 255deg 360deg
+        );
+
+        animation: spinVinyleGrooves 8s linear infinite;
+        animation-play-state: paused; /* Reste immobile à sa position */
+        will-change: transform;
+    }
+
+    /* Animation déclenchée par JS */
+    @keyframes spinVinyleGrooves {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .vinyle-grooves.playing {
+        animation: spinVinyleGrooves 10s linear infinite;
+    }
+
+    .play-button {
+        position: absolute;
+        top: calc(-8 * var(--u));
+        right: calc(-8 * var(--u));
+        width: max(44px, calc(54 * var(--u))); /* cible tactile minimale 44px */
+        height: max(44px, calc(54 * var(--u)));
+        border-radius: 50%;
+        background-color: var(--primary-accent);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        z-index: 10;
+        padding: 0; /* Évite tout décalage interne */
+    }
+
+    .play-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        line-height: 1; /* Supprime l'espace vertical résiduel de la police */
+        color: #08090a;
+        margin: 0;      /* Supprime le décalage forcé */
+    }
+
+    /* Ajustement optique uniquement pour le triangle Play */
+    .play-button:not(.is-playing) .play-icon {
+        margin-left: 2px;
+    }
+
+    .play-button:hover {
+        transform: scale(1.1);
+        background-color: #0d9488;
+    }
+
+    .vinyle-project,
+    .vinyle-parcours,
+    .vinyle-contact {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(105 * var(--u));
+        height: calc(105 * var(--u));
+        border-radius: 50%;
+        background-color: var(--btn-dark);
+        color: #ffffff;
+        border: none;
+        font-weight: 600;
+        font-size: max(12px, calc(16 * var(--u)));
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.25s ease, background-color 0.25s ease;
+        z-index: 5;
+    }
+
+    .vinyle-project {
+        transform: translate(-50%, -50%) translateY(calc(var(--r) * -1));
+    }
+    .vinyle-project:hover {
+        transform: translate(-50%, -50%) translateY(calc(var(--r) * -1)) scale(1.08);
+        background-color: var(--btn-dark-hover);
+    }
+
+    .vinyle-contact {
+        transform: translate(-50%, -50%) rotate(120deg) translateY(calc(var(--r) * -1)) rotate(-120deg);
+    }
+    .vinyle-contact:hover {
+        transform: translate(-50%, -50%) rotate(120deg) translateY(calc(var(--r) * -1)) rotate(-120deg) scale(1.08);
+        background-color: var(--btn-dark-hover);
+    }
+
+    .vinyle-parcours {
+        transform: translate(-50%, -50%) rotate(240deg) translateY(calc(var(--r) * -1)) rotate(-240deg);
+    }
+    .vinyle-parcours:hover {
+        transform: translate(-50%, -50%) rotate(240deg) translateY(calc(var(--r) * -1)) rotate(-240deg) scale(1.08);
+        background-color: var(--btn-dark-hover);
+    }
+
+    .right-content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .name {
+        font-size: clamp(32px, 7vw, 52px);
+        font-weight: 800;
+        color: var(--primary-accent);
+        margin-bottom: 24px;
+        letter-spacing: -0.5px;
+    }
+
+    .description {
+        font-size: clamp(15px, 2.2vw, 20px);
+        line-height: 1.6;
+        color: var(--description-texte);
+        margin-bottom: 20px;
+    }
+
+    .status {
+        font-size: clamp(14px, 2vw, 18px);
+        line-height: 1.5;
+        color: var(--text-muted);
+        margin-bottom: 36px;
+    }
+
+    .cv-div {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .btn-cv {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        height: 56px; /* 56px est le standard UI pour un bouton ergonomique */
+        padding: 0 28px;
+        border-radius: 9999px;
+        background-color: var(--primary-accent);
+        color: #050505; /* Texte noir sur fond turquoise pour un contraste accessible */
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 16px;
+        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-cv:hover {
+        background-color: #0d9488;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(20, 184, 166, 0.35);
+    }
+
+    /* Animation de rotation infinie */
+    @keyframes spinVinyle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+    }
+
+    /* Classe ajoutée en JS quand la musique est active */
+.vinyle-center.playing {
+    animation: spinVinyle 4s linear infinite;
+}
+
+button.btn-cv {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+}
