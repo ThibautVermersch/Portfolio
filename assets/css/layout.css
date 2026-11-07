@@ -19,7 +19,7 @@
         display: inline-block;
         border-radius: 9999px;
         background-color: var(--btn-dark);
-        color: #ffffff;
+        color: var(--text-main);
         padding: 10px 24px;
         text-decoration: none;
         font-size: 16px;
@@ -96,12 +96,10 @@
 
 /* Le texte actif passe en blanc/noir contrasté */
 .language-button-active {
-  color: var(--btn-dark);
+  color: var(--lang-text);
 }
 
-.language-button:hover {
-  color: #ffffff;
-}
+
 
 .theme {
     position: relative;
