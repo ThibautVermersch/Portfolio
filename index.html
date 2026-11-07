@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio de Vermersch Thibaut</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/projects.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <script src="assets/js/main.js" defer></script>
 </head>
 <body>
@@ -32,18 +38,15 @@
     
     <section class="main-page">
         <div class="left-player">
+            <div class="glow"></div>
             <div class="vinyle-orbit">
-                <!-- Pastilles satellites -->
                 <button class="vinyle-project" data-tab="projets" data-i18n="orbit_projects">Projets</button>
                 <button class="vinyle-parcours" data-tab="parcours" data-i18n="orbit_about">Parcours</button>
                 <button class="vinyle-contact" data-tab="contact" data-i18n="orbit_contact">Contact</button>
 
-                <!-- Disque vinyle central -->
                 <div class="vinyle-center">
-                    <!-- Ce calque contient les traits blancs et tourne -->
                     <div class="vinyle-grooves"></div>
                     
-                    <!-- Le bouton Play reste fixe -->
                     <button type="button" class="play-button" aria-label="Lire la musique">
                         <span class="play-icon">▶</span>
                     </button>
@@ -78,7 +81,6 @@
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal-window">
         
-            <!-- En-tête : Onglets internes + Bouton fermer -->
             <div class="modal-header">
                 <div class="modal-tabs">
                     <button type="button" class="tab-btn active" data-tab="profil" data-i18n="tab_profile">01. Profil</button>
@@ -90,7 +92,6 @@
                 <button type="button" class="modal-close-btn" id="modal-close" aria-label="Fermer">&times;</button>
             </div>
 
-            <!-- Contenu dynamique des onglets -->
             <div class="modal-body">
                 <!-- ONGLET 01 : PROFIL -->
                 <div class="tab-content active" id="tab-profil">
@@ -142,6 +143,7 @@
                     </div>
                 </div>
 
+                
 <!-- ONGLET 02 : PROJETS -->
 <div class="tab-content" id="tab-projets">
     <div class="projects-header">
@@ -151,137 +153,240 @@
         <span class="projects-counter" data-i18n="projects_counter">6 Projets Sélectionnés</span>
     </div>
 
-    <div class="projects-grid">
+    <div class="projects-list">
         <!-- 1. FractaLens -->
-        <a href="https://github.com/ThibautVermersch/Fractalens.git" target="_blank" rel="noopener noreferrer" class="project-card">
-            <div class="card-top">
-                <div class="card-meta">
-                    <span class="card-category" data-i18n="cat_maths">JAVA • MATHS & GRAPHISME</span>
-                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_maths">JAVA • MATHS & GRAPHISME</span>
+                        <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/Fractalens.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
                 </div>
-                <div class="card-link-icon">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <h3 class="card-title">FractaLens</h3>
+                <p class="card-description" data-i18n="desc_fractalens">
+                    Générateur de fractales (ensembles de Mandelbrot et Julia) développé avec Gradle, nombres complexes et patrons de conception (Strategy, Builder, Iterator).
+                </p>
+                <div class="card-tags">
+                    <span>Java</span>
+                    <span>Gradle</span>
+                    <span>Design Patterns</span>
                 </div>
             </div>
-            <h3 class="card-title">FractaLens</h3>
-            <p class="card-description" data-i18n="desc_fractalens">
-                Générateur de fractales (ensembles de Mandelbrot et Julia) développé avec Gradle, nombres complexes et patrons de conception (Strategy, Builder, Iterator).
-            </p>
-            <div class="card-tags">
-                <span>Java</span>
-                <span>Gradle</span>
-                <span>Design Patterns</span>
-            </div>
-        </a>
+
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/Fractale/lambda_rotation_ice.gif" alt="Aperçu FractaLens 1" loading="lazy">
+                    <img src="assets/images/Fractale/mandelbrot_zoom_ice.gif" alt="Aperçu FractaLens 2" loading="lazy">
+                    <img src="assets/images/Fractale/test.png" alt="Aperçu FractaLens 3" loading="lazy">
+                </div>
+</div>
+        </article>
 
         <!-- 2. AnimeBox -->
-        <a href="https://github.com/ThibautVermersch/animeList.git" target="_blank" rel="noopener noreferrer" class="project-card">
-            <div class="card-top">
-                <div class="card-meta">
-                    <span class="card-category" data-i18n="cat_web">FULLSTACK • APPLICATION WEB</span>
-                    <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_web">FULLSTACK • APPLICATION WEB</span>
+                        <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/animeList.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
                 </div>
-                <div class="card-link-icon">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <h3 class="card-title">AnimeBox</h3>
+                <p class="card-description" data-i18n="desc_animebox">
+                    Plateforme de suivi et de notation d'œuvres inspirée de Letterboxd, intégrant un système de collections, avis et filtrage dynamique.
+                </p>
+                <div class="card-tags">
+                    <span>PHP</span>
+                    <span>Laravel</span>
+                    <span>PostgreSQL</span>
                 </div>
             </div>
-            <h3 class="card-title">AnimeBox</h3>
-            <p class="card-description" data-i18n="desc_animebox">
-                Plateforme de suivi et de notation d'œuvres inspirée de Letterboxd, intégrant un système de collections, avis et filtrage dynamique.
-            </p>
-            <div class="card-tags">
-                <span>PHP</span>
-                <span>Laravel</span>
-                <span>PostgreSQL</span>
-            </div>
-        </a>
 
-        <!-- 3. PacMan Java -->
-        <a href="https://github.com/ThibautVermersch/PacMan.git" target="_blank" rel="noopener noreferrer" class="project-card">
-            <div class="card-top">
-                <div class="card-meta">
-                    <span class="card-category" data-i18n="cat_game">JEU VIDÉO • POO</span>
-                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/AnimeBox/main.png" alt="Aperçu AnimeBox1" loading="lazy">
+                    <img src="assets/images/AnimeBox/Card.png" alt="Aperçu AnimeBox 2" loading="lazy">
+                    <img src="assets/images/AnimeBox/API.png" alt="Aperçu AnimeBox 3" loading="lazy">
                 </div>
-                <div class="card-link-icon">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </article>
+
+        <!-- 3. Pac-Man JavaFX -->
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_game">JEU VIDÉO • POO</span>
+                        <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/PacMan.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+                <h3 class="card-title">Pac-Man JavaFX</h3>
+                <p class="card-description" data-i18n="desc_pacman">
+                    Recréation du jeu rétro PacMan, gestion des collisions et des déplacements des personnages.
+                </p>
+                <div class="card-tags">
+                    <span>Java</span>
+                    <span>JavaFX</span>
+                    <span>POO</span>
                 </div>
             </div>
-            <h3 class="card-title">Pac-Man JavaFX</h3>
-            <p class="card-description" data-i18n="desc_pacman">
-                Recréation du jeu rétro PacMan, gestion des collisions et des déplacements des personnages.
-            </p>
-            <div class="card-tags">
-                <span>Java</span>
-                <span>JavaFX</span>
-                <span>POO</span>
-            </div>
-        </a>
+
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/PacMan/image.png" alt="Aperçu Pacman 1" loading="lazy">
+                    <img src="assets/images/PacMan/Control.png" alt="Aperçu Pacman 2" loading="lazy">
+                    <img src="assets/images/PacMan/SceneBuilder.png" alt="Aperçu Pacman 3" loading="lazy">
+                </div>
+        </article>
 
         <!-- 4. Cabinet Médical -->
-        <a href="https://github.com/ThibautVermersch/Application-Gestion-de-Cabinet-medical.git" target="_blank" rel="noopener noreferrer" class="project-card">
-            <div class="card-top">
-                <div class="card-meta">
-                    <span class="card-category" data-i18n="cat_business">LOGICIEL METIER • GESTION</span>
-                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_business">LOGICIEL METIER • GESTION</span>
+                        <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/Application-Gestion-de-Cabinet-medical.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
                 </div>
-                <div class="card-link-icon">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <h3 class="card-title">Gestion Cabinet Médical</h3>
+                <p class="card-description" data-i18n="desc_medical">
+                    Application de gestion de rendez-vous, suivi des patients et prescriptions des médicaments.
+                </p>
+                <div class="card-tags">
+                    <span>JavaFX</span>
+                    <span>SQL</span>
+                    <span>Architecture MVC</span>
                 </div>
             </div>
-            <h3 class="card-title">Gestion Cabinet Médical</h3>
-            <p class="card-description" data-i18n="desc_medical">
-                Application de gestion de rendez-vous, suivi des patients et prescriptions des médicaments.
-            </p>
-            <div class="card-tags">
-                <span>JavaFX</span>
-                <span>SQL</span>
-                <span>Architecture MVC</span>
-            </div>
-        </a>
+
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/Cabinet/main.png" alt="Aperçu Cabinet 1" loading="lazy">
+                    <img src="assets/images/Cabinet/patient.png" alt="Aperçu Cabinet 2" loading="lazy">
+                    <img src="assets/images/Cabinet/ajout.png" alt="Aperçu Cabinet 3" loading="lazy">
+                </div>
+        </article>
 
         <!-- 5. Générateur de Mots de Passe -->
-        <a href="https://github.com/ThibautVermersch/Generateur-de-mots-de-passe.git" target="_blank" rel="noopener noreferrer" class="project-card">
-            <div class="card-top">
-                <div class="card-meta">
-                    <span class="card-category" data-i18n="cat_secu">SÉCURITÉ • UTILITAIRE</span>
-                    <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_secu">SÉCURITÉ • UTILITAIRE</span>
+                        <span class="project-status status-completed" data-i18n="status_completed">Terminé</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/Generateur-de-mots-de-passe.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
                 </div>
-                <div class="card-link-icon">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <h3 class="card-title" data-i18n="title_keygen">Générateur de mots de passe sécurisé</h3>
+                <p class="card-description" data-i18n="desc_keygen">
+                    Générateur configurable de mots de passe sécurisés en Java avec la possibilité de choisir la longueur et d'exporter les mots de passe.
+                </p>
+                <div class="card-tags">
+                    <span>Java</span>
+                    <span>Sécurité</span>
                 </div>
             </div>
-            <h3 class="card-title" data-i18n="title_keygen">Générateur de mots de passe sécurisé</h3>
-            <p class="card-description" data-i18n="desc_keygen">
-                Générateur configurable de mots de passe sécurisés en Java avec la possibilité de choisir la longueur et d'exporter les mots de passe.
-            </p>
-            <div class="card-tags">
-                <span>Java</span>
-                <span>Sécurité</span>
-            </div>
-        </a>
+
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/MDP/terminal.png" alt="Aperçu Generateur de mots de passe  1" loading="lazy">
+                    <img src="assets/images/MDP/Gen.png" alt="Aperçu  Generateur de mots de passe " loading="lazy">
+                    <img src="assets/images/MDP/Save.png" alt="Aperçu  Generateur de mots de passe " loading="lazy">
+                </div>
+        </article>
 
         <!-- 6. Portfolio Vinyle -->
-        <a href="https://github.com/ThibautVermersch/Portfolio.git" target="_blank" rel="noopener noreferrer" class="project-card">
-            <div class="card-top">
-                <div class="card-meta">
-                    <span class="card-category" data-i18n="cat_front">FRONTEND • INTERACTION</span>
-                    <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_front">FRONTEND • INTERACTION</span>
+                        <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/Portfolio.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
                 </div>
-                <div class="card-link-icon">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <h3 class="card-title">Portfolio Vinyle</h3>
+                <p class="card-description" data-i18n="desc_portfolio">
+                    Interface interactive inspirée d'une platine vinyle avec lecteur audio, thèmes persistants et internationalisation.
+                </p>
+                <div class="card-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
                 </div>
             </div>
-            <h3 class="card-title">Portfolio Vinyle</h3>
-            <p class="card-description" data-i18n="desc_portfolio">
-                Interface interactive inspirée d'une platine vinyle avec lecteur audio, thèmes persistants et internationalisation.
-            </p>
-            <div class="card-tags">
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>JavaScript</span>
+
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/Portfolio/main.png" alt="Aperçu Portfolio 1" loading="lazy">
+                    <img src="assets/images/Portfolio/contact-en.png" alt="Aperçu Portfolio 2" loading="lazy">
+                    <img src="assets/images/Portfolio/script.png" alt="Aperçu Portfolio 3" loading="lazy">
+                </div>
+        </article>
+        
+        <!-- 6. Space Invader -->
+        <article class="project-showcase">
+            <div class="project-card-side">
+                <div class="card-top">
+                    <div class="card-meta">
+                        <span class="card-category" data-i18n="cat_front">JEUX • PATRONS DE CONCEPTIONS</span>
+                        <span class="project-status status-ongoing" data-i18n="status_ongoing">En cours</span>
+                    </div>
+                    <a href="https://github.com/ThibautVermersch/Portfolio.git" target="_blank" rel="noopener noreferrer" class="card-link-icon" aria-label="Voir sur GitHub">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+                <h3 class="card-title">Space Invader</h3>
+                <p class="card-description" data-i18n="desc_space_invader">
+                    Interface interactive inspiré du jeux space-invader réalisé dans le cadre de mon cursus scolaire en groupe de 5.
+                    <br>
+                    Projet réalisé par : <br>
+                        - Vermersch Thibaut (Chef de projet), <br>
+                        - Pispisa Mathéo, <br>
+                        - Heroguel Paul, <br>
+                        - Bierent Adam, <br>
+                        - Bezzaouya Aissa <br>
+                        <br> 
+                    Squelette réalisé par le professeur : <br>
+                        - Wallon Romain
+                </p>
+                <div class="card-tags">
+                    <span>Java</span>
+                    <span>Gradle</span>
+                    <span>Patron de conception</span>
+                </div>
             </div>
-        </a>
+
+            <!-- Carrousel associé à droite -->
+            <div class="project-carousel">
+                <div class="carousel-track-css slides-3">
+                    <img src="assets/images/SpaceInvader/Space-invader-game.png" alt="Aperçu SpaceInvader 1" loading="lazy">
+                    <img src="assets/images/SpaceInvader/Space-invader State.png" alt="Aperçu SpaceInvader 2" loading="lazy">
+                    <img src="assets/images/SpaceInvader/Space-invader dead.png" alt="Aperçu SpaceInvader 3" loading="lazy">
+                </div>
+        </article>
     </div>
 </div>
 

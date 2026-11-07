@@ -1,0 +1,151 @@
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px clamp(16px, 4vw, 48px);
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .nav-link {
+        display: inline-block;
+        border-radius: 9999px;
+        background-color: var(--btn-dark);
+        color: #ffffff;
+        padding: 10px 24px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .nav-link:hover{
+        background-color: var(--primary-accent);
+        transform: scale(1.05);
+    }
+
+    .header-control {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+.language {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--ctrl-bg);
+  border: 1px solid #1e2430;
+  border-radius: 9999px;
+  padding: 3px;
+  width: 96px;
+  height: 38px;
+  box-sizing: border-box;
+}
+
+/* Animation langue */
+.lang-indicator {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  background-color: var(--primary-accent, #14b8a6);
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(20, 184, 166, 0.45);
+  pointer-events: none;
+  z-index: 1;
+
+  transition: transform 0.45s cubic-bezier(0.68, -0.4, 0.27, 1.4);
+  transform-origin: center;
+}
+
+/* Quand l'anglais est actif : déplacement à droite */
+.language.is-en .lang-indicator {
+  transform: translateX(100%);
+}
+
+/* Les boutons transparents par-dessus l'indicateur */
+.language-button,
+.language-button-active {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent !important;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+/* Le texte actif passe en blanc/noir contrasté */
+.language-button-active {
+  color: var(--btn-dark);
+}
+
+.language-button:hover {
+  color: #ffffff;
+}
+
+.theme {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 120px;
+    height: 42px;
+    background-color: var(--ctrl-bg);
+    border: none;
+    border-radius: 9999px;
+    padding: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+    .theme:hover {
+        background-color: #383b42;
+        transform: translateY(-1px);
+    }
+
+    .theme .icon {
+        position: absolute;
+        left: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #000000;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2;
+    }
+
+    .theme-text {
+        position: absolute;
+        left: 14px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+        pointer-events: none;
+
+        transform: translateX(40px);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+    }

@@ -1,0 +1,307 @@
+
+/* Entête de la section projets */
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.projects-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.projects-counter {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-accent, #14b8a6);
+}
+
+/* Grille 2 colonnes comme sur l'image */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-height: 58vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar discrète */
+.projects-grid::-webkit-scrollbar {
+  width: 5px;
+}
+.projects-grid::-webkit-scrollbar-thumb {
+  background: #1e2430;
+  border-radius: 4px;
+}
+
+/* Carte projet cliquable */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0d11;
+  border: 1px solid #1a202c;
+  border-radius: 10px;
+  padding: 20px;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.4);
+}
+
+/* En-tête de carte */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-category {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-accent, #14b8a6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card-link-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 20%;
+  background-color: #12161f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.project-card:hover .card-link-icon {
+  background-color: var(--primary-accent, #14b8a6);
+  color: #08090a;
+}
+
+/* Titre et description */
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 8px 0;
+}
+
+.card-description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0 0 18px 0;
+  flex-grow: 1;
+}
+
+/* Badges de technologies */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-tags span {
+  font-size: 11px;
+  color: #cbd5e1;
+  background-color: #141822;
+  border: 1px solid #1e2532;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+/* Alignement du thème et du statut côte à côte */
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Style de base de l'étiquette */
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Statut : Terminé (Vert) */
+.project-status.status-completed {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.project-status.status-completed::before {
+  background-color: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
+}
+
+/* Statut : En cours (Ambre / Jaune-Orange) */
+.project-status.status-ongoing {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.project-status.status-ongoing::before {
+  background-color: #fbbf24;
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.7);
+}
+
+/* Evite les débordements de textes longs */
+.card-title,
+.card-description { min-width: 0; overflow-wrap: anywhere; }
+
+.projects-header { flex-wrap: wrap; gap: 8px 16px; }
+.card-meta { flex-wrap: wrap; row-gap: 6px; }
+.projects-grid { max-height: none; overflow: visible; padding-right: 0; }
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 58vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.projects-list::-webkit-scrollbar {
+  width: 5px;
+}
+.projects-list::-webkit-scrollbar-thumb {
+  background: #1e2430;
+  border-radius: 4px;
+}
+
+/* Ligne projet : Carte à gauche + Carrousel à droite */
+.project-showcase {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+  background-color: #0b0d11;
+  border: 1px solid #1a202c;
+  border-radius: 14px;
+  padding: 16px;
+  align-items: stretch;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-showcase:hover {
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Partie carte gauche */
+.project-card-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-carousel {
+  position: relative;
+  background-color: #07090d;
+  border: 1px solid #181d26;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 190px;
+}
+
+/* Bande défilante */
+.carousel-track-css {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-track-css img {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Cas A : Projet avec 2 images (3 secondes au total : 1.5s par image) --- */
+.slides-2 {
+  animation: slideShow2 3s infinite ease-in-out;
+}
+
+@keyframes slideShow2 {
+  0%, 45% {
+    transform: translateX(0%);
+  }
+  50%, 95% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* --- Cas B : Projet avec 3 images (4.5 secondes au total : 1.5s par image) --- */
+.slides-3 {
+  animation: slideShow3 10s infinite ease-in-out;
+}
+
+@keyframes slideShow3 {
+  0%, 28% {
+    transform: translateX(0%);
+  }
+  33%, 61% {
+    transform: translateX(-100%);
+  }
+  66%, 95% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* --- Cas C : Projet avec 4 images (6 secondes au total : 1.5s par image) --- */
+.slides-4 {
+  animation: slideShow4 6s infinite ease-in-out;
+}
+
+@keyframes slideShow4 {
+  0%, 20% {
+    transform: translateX(0%);
+  }
+  25%, 45% {
+    transform: translateX(-100%);
+  }
+  50%, 70% {
+    transform: translateX(-200%);
+  }
+  75%, 95% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Pause automatique de l'animation quand la souris survole l'image */
+.project-carousel:hover .carousel-track-css {
+  animation-play-state: paused;
+}
