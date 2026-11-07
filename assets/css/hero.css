@@ -172,7 +172,7 @@
         height: calc(105 * var(--u));
         border-radius: 50%;
         background-color: var(--btn-dark);
-        color: #ffffff;
+        color: var(--text-main);
         border: none;
         font-weight: 600;
         font-size: max(12px, calc(16 * var(--u)));

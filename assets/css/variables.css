@@ -1,26 +1,39 @@
-/* ==========================================================================
-   variables.css — Couleurs, polices, thèmes clair/sombre
-   ========================================================================== */
 
 :root {
-        --bg-main: #0F0F11;
+        --bg-main: #0a0a0a;
         --text-main: #ffffff;
         --text-muted: #94a3b8;
-        --btn-dark: #242528;
-        --ctrl-bg: #242528;
+        --btn-dark: #262626;
+        --ctrl-bg: #262626;
+        --lang-text: #262626;
         --btn-dark-hover: #2e3138;
         --border-color: rgba(255, 255, 255, 0.15);
         --primary-accent: #14B8A6;
         --description-texte: #FAFAFA;
-        --glow-rgb: 20, 184, 166; /* halo derrière le vinyle (orange). Turquoise : 20, 184, 166 */
-        /* Unité de taille du lecteur vinyle : 1px au maximum, rétrécit sur petits écrans */
+        --glow-rgb: 20, 184, 166;
         --u: min(1px, (100vw - 32px) / 500);
+        --bg-card: #0d0e10;
+        --card-item-bg: #0a0a0a;
+        --card-strong-item:#e2e8f0 ;
+        --contact-link:#ffffff ;
+        --profil-pill : #14b8a50a;
+        
     }
 
     body.light-theme {
-        --bg-main: #FAFAFA;
+        --bg-main: #e5e5e5;
         --border-color: #0F0F11;
-        --description-texte: #0F0F11
+        --description-texte: #0F0F11;
+        --text-main: #0a0a0a;
+        --btn-dark: #a3a3a3;
+        --ctrl-bg: #a3a3a3;
+        --btn-dark-hover: #d4d4d4;
+        --text-muted: #303534;
+        --bg-card: #a3a3a3;
+        --card-item-bg: #d4d4d4;
+        --card-strong-item:#0F0F11 ;
+        --contact-link:#0F0F11 ;
+        --profil-pill : rgba(1, 29, 26, 0.459);
     }
 
 /* --- Thème clair : surcharges des composants --- */

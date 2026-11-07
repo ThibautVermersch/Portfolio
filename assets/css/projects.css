@@ -10,7 +10,7 @@
 .projects-title {
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-main);
   margin: 0;
 }
 
@@ -43,7 +43,7 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: #0b0d11;
+  background-color: var(--bg-card);
   border: 1px solid #1a202c;
   border-radius: 10px;
   padding: 20px;
@@ -196,7 +196,7 @@
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 16px;
-  background-color: #0b0d11;
+  background-color: var(--bg-card);
   border: 1px solid #1a202c;
   border-radius: 14px;
   padding: 16px;

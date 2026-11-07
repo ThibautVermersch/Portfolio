@@ -391,3 +391,28 @@ if (btnPreviewCv) {
 }
 
 }
+
+
+(function () {
+    var vinyls = document.querySelectorAll('.vinyl-wrap');
+    var panels = document.querySelectorAll('.vinyl-panel');
+    var zone = document.querySelector('.vinyl-panels');
+    var current = -1;
+ 
+    vinyls.forEach(function (wrap, i) {
+      wrap.querySelector('.vinyl').addEventListener('click', function () {
+        current = (current === i) ? -1 : i;
+        vinyls.forEach(function (w, j) {
+          var on = j === current;
+          w.classList.toggle('is-open', on);
+          w.querySelector('.vinyl').setAttribute('aria-expanded', on);
+        });
+        panels.forEach(function (p, j) { p.classList.toggle('is-active', j === current); });
+        zone.classList.toggle('is-open', current !== -1);
+        if (current !== -1) fillNotes();
+      });
+    });
+ 
+    window.addEventListener('resize', fillNotes);
+    fillNotes();
+  })();
