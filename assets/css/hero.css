@@ -1,7 +1,3 @@
-/* ==========================================================================
-   hero.css — Page d'accueil : vinyle, présentation, boutons CV
-   ========================================================================== */
-
     .main-page {
         display: flex;
         align-items: center;
@@ -12,8 +8,7 @@
         gap: clamp(32px, 5vw, 80px);
     }
 
-    /* Tout le lecteur vinyle est dimensionné avec --u (défini dans :root) :
-       1 unité = 1px sur grand écran, puis il rétrécit proportionnellement. */
+
     .left-player {
         position: relative;
         width: calc(520 * var(--u));
@@ -24,7 +19,7 @@
         flex-shrink: 0;
     }
 
-    /* Halo coloré derrière le vinyle (couleur réglable via --glow-rgb dans variables.css) */
+    /* Halo coloré derrière le vinyle */
     .glow {
         position: absolute;
         top: calc(0 * var(--u));
@@ -103,7 +98,7 @@
         );
 
         animation: spinVinyleGrooves 8s linear infinite;
-        animation-play-state: paused; /* Reste immobile à sa position */
+        animation-play-state: paused;
         will-change: transform;
     }
 
@@ -125,7 +120,7 @@
         position: absolute;
         top: calc(-8 * var(--u));
         right: calc(-8 * var(--u));
-        width: max(44px, calc(54 * var(--u))); /* cible tactile minimale 44px */
+        width: max(44px, calc(54 * var(--u)));
         height: max(44px, calc(54 * var(--u)));
         border-radius: 50%;
         background-color: var(--primary-accent);
@@ -137,7 +132,7 @@
         box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
         transition: transform 0.2s ease, background-color 0.2s ease;
         z-index: 10;
-        padding: 0; /* Évite tout décalage interne */
+        padding: 0;
     }
 
     .play-icon {
@@ -147,12 +142,11 @@
         width: 100%;
         height: 100%;
         font-size: 18px;
-        line-height: 1; /* Supprime l'espace vertical résiduel de la police */
+        line-height: 1;
         color: #08090a;
-        margin: 0;      /* Supprime le décalage forcé */
+        margin: 0;
     }
 
-    /* Ajustement optique uniquement pour le triangle Play */
     .play-button:not(.is-playing) .play-icon {
         margin-left: 2px;
     }
@@ -245,11 +239,11 @@
         align-items: center;
         justify-content: center;
         gap: 12px;
-        height: 56px; /* 56px est le standard UI pour un bouton ergonomique */
+        height: 56px;
         padding: 0 28px;
         border-radius: 9999px;
         background-color: var(--primary-accent);
-        color: #050505; /* Texte noir sur fond turquoise pour un contraste accessible */
+        color: #050505;
         text-decoration: none;
         border: none;
         cursor: pointer;

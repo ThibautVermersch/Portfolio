@@ -39,66 +39,65 @@
     }
 
 .language {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background-color: var(--ctrl-bg);
-  border: 1px solid #1e2430;
-  border-radius: 9999px;
-  padding: 3px;
-  width: 96px;
-  height: 38px;
-  box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--ctrl-bg);
+    border: 1px solid #1e2430;
+    border-radius: 9999px;
+    padding: 3px;
+    width: 96px;
+    height: 38px;
+    box-sizing: border-box;
 }
 
-/* Animation langue */
+
 .lang-indicator {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: calc(50% - 3px);
-  height: calc(100% - 6px);
-  background-color: var(--primary-accent, #14b8a6);
-  border-radius: 9999px;
-  box-shadow: 0 0 14px rgba(20, 184, 166, 0.45);
-  pointer-events: none;
-  z-index: 1;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    background-color: var(--primary-accent, #14b8a6);
+    border-radius: 9999px;
+    box-shadow: 0 0 14px rgba(20, 184, 166, 0.45);
+    pointer-events: none;
+    z-index: 1;
 
-  transition: transform 0.45s cubic-bezier(0.68, -0.4, 0.27, 1.4);
-  transform-origin: center;
+    transition: transform 0.45s cubic-bezier(0.68, -0.4, 0.27, 1.4);
+    transform-origin: center;
 }
 
-/* Quand l'anglais est actif : déplacement à droite */
+
 .language.is-en .lang-indicator {
-  transform: translateX(100%);
+    transform: translateX(100%);
 }
 
-/* Les boutons transparents par-dessus l'indicateur */
+
 .language-button,
 .language-button-active {
-  position: relative;
-  z-index: 2;
-  flex: 1;
-  height: 100%;
-  border: none;
-  background: transparent !important;
-  color: var(--text-main);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 0;
-  border-radius: 9999px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    height: 100%;
+    border: none;
+    background: transparent !important;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 0;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
 }
 
-/* Le texte actif passe en blanc/noir contrasté */
+
 .language-button-active {
-  color: var(--lang-text);
+    color: var(--lang-text);
 }
-
 
 
 .theme {
