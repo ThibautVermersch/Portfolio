@@ -1,5 +1,3 @@
-
-
     .modal-overlay {
     position: fixed;
     inset: 0;
@@ -45,7 +43,7 @@
     justify-content: center;
     position: relative;
     margin-bottom: 24px;
-    padding: 0 44px; /* réserve la place du bouton fermer */
+    padding: 0 44px;
     flex-shrink: 0;
     }
 
@@ -203,8 +201,7 @@
     .vinyl-section { display: block;
       margin-top: 18px;
     }
- 
-  /* Rangée des 3 vinyles */
+    
   .vinyl-row {
     display: flex;
     gap: 14px;
@@ -213,14 +210,14 @@
     padding-left: 10%;
     padding-right: 10%;
   }
- 
+  
   .vinyl-wrap {
     width: 100px;
     flex: none;
     text-align: center;
     
   }
- 
+  
   .vinyl {
     position: relative;
     display: block;
@@ -240,7 +237,7 @@
   .vinyl:focus-visible { outline: 2px solid var(--primary-accent); outline-offset: 4px; }
 
 
- 
+  
   .vinyl-label {
     position: absolute;
     top: 50%; left: 50%;
@@ -253,13 +250,13 @@
     z-index: 1;
     background-color: rgb(from var(--primary-accent) r g b /0.5);
   }
- 
+  
   .vinyl-hint { margin-top: 8px; font-size: 12px; color: var(--text-muted); transition: opacity .3s; }
   .vinyl-wrap.is-open .vinyl { animation-play-state: running; }
   .vinyl-wrap.is-open .vinyl-hint { opacity: 0; }
- 
+  
   @keyframes vinyl-spin { to { transform: rotate(360deg); } }
- 
+  
 
   .vinyl-panels {
     display: grid;
@@ -267,15 +264,15 @@
     transition: grid-template-rows .6s cubic-bezier(.2,.8,.2,1), margin-top .6s;
   }
   .vinyl-panels.is-open { grid-template-rows: 1fr; margin-top: 18px; }
- 
+  
   .vinyl-panels-inner { min-height: 0; overflow: hidden; display: grid; }
- 
+  
   .vinyl-panel {
     grid-area: 1 / 1;
     position: relative;
     padding: 42px 52px;
     background-color: var(--bg-card);
-    border-radius: 12px;
+    border-radius: 2px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-14px);
@@ -289,15 +286,14 @@
   }
   
   
-  .vinyl-panel h3 { font-size: 14px; margin: 0 0 6px; color: #f1f5f9; }
-  .vinyl-panel p  { font-size: 12px; color: #64748b; line-height: 1.5; margin: 0; }
+  .vinyl-panel h3 { font-size: 30px; margin: 0 0 6px; color: var(--text-main); }
+  .vinyl-panel p  { font-size: 20px; color: var(--text-muted); line-height: 1.5; margin: 0; }
 
   @media (prefers-reduced-motion: reduce) {
     .vinyl { animation-duration: 8s; }
     .vinyl-panels, .vinyl-panel { transition: opacity .2s; }
   }
 
-    /* Footer */
     .modal-footer {
     display: flex;
     justify-content: space-between;
@@ -340,7 +336,6 @@
     display: block;
 }
 
-/* Entête Parcours */
 .parcours-header {
   display: flex;
   justify-content: space-between;
@@ -371,7 +366,6 @@
   transform: translateX(2px);
 }
 
-/* Timeline verticale */
 .timeline {
   position: relative;
   margin-left: 10px;
@@ -382,7 +376,6 @@
   margin-bottom: 28px;
 }
 
-/* Ligne continue */
 .timeline::before {
   content: '';
   position: absolute;
@@ -397,7 +390,7 @@
   position: relative;
 }
 
-/* Point lumineux */
+
 .timeline-dot {
   position: absolute;
   top: 5px;
@@ -442,7 +435,7 @@
   max-width: 720px;
 }
 
-/* Boîte des compétences techniques */
+
 .skills-box {
   background-color: var(--bg-card);
   border: 1px solid #1a202c;
@@ -483,7 +476,6 @@
   color: var(--card-strong-item);
 }
 
-/* Entête Contact */
 .contact-header {
   margin-bottom: 24px;
 }
@@ -503,7 +495,6 @@
   max-width: 650px;
 }
 
-/* Grille des cartes de contact */
 .contact-grid {
   display: flex;
   flex-direction: column;
@@ -511,7 +502,6 @@
   margin-bottom: 24px;
 }
 
-/* Carte contact cliquable */
 .contact-card {
   display: flex;
   align-items: center;
@@ -580,7 +570,6 @@
   transform: translate(2px, -2px);
 }
 
-/* Bandeau inférieur (Call-to-Action) */
 .contact-banner {
   background-color: var(--bg-card);
   border: 1px solid var(--bg-card);
@@ -625,8 +614,6 @@
   transform: scale(1.03);
 }
 
-/* Petit lien de secours sous l'aperçu du CV (les PDF en iframe ne
-   s'affichent pas sur la plupart des navigateurs mobiles) */
 .cv-fallback {
   display: inline-block;
   margin-top: 12px;
@@ -637,7 +624,7 @@
 }
 .cv-fallback:hover { text-decoration: underline; }
 
-/* Evite les débordements de textes longs (e-mail, noms de formation...) */
+
 .contact-card-info,
 .timeline-content { min-width: 0; overflow-wrap: anywhere; }
 

@@ -36,20 +36,11 @@
         --profil-pill : rgba(1, 29, 26, 0.459);
     }
 
-/* --- Thème clair : surcharges des composants --- */
-    body.light-theme .vinyle-project,
-    body.light-theme .vinyle-parcours,
-    body.light-theme .vinyle-contact,
-    body.light-theme .nav-link,
-    body.light-theme .language-button,
-    body.light-theme .theme {
-        color: var(--text-main);
-    }
 
     /* Quand le thème clair est actif, on inverse la direction du bouton */
     body.light-theme .theme {
         flex-direction: row-reverse;
-    padding: 6px 10px 6px 18px; /* Inverse les marges internes pour garder un rendu équilibré */
+    padding: 6px 10px 6px 18px;
     }
 
     body.light-theme .theme .icon {
