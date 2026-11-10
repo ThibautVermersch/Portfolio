@@ -89,14 +89,14 @@
 
 
 .card-title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
   color: #f8fafc;
   margin: 0 0 8px 0;
 }
 
 .card-description {
-  font-size: 13px;
+  font-size: 20px;
   line-height: 1.5;
   color: var(--text-muted);
   margin: 0 0 18px 0;
