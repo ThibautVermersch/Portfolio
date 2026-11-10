@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Lora";
+    src: url(/assets/Font/Lora/Lora-VariableFont_wght.ttf) format("TrueType");
+}
     html {
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
@@ -13,6 +16,6 @@
     body {
         background-color: var(--bg-main);
         color: var(--text-main);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family: Lora;
         overflow-x: hidden;
     }
