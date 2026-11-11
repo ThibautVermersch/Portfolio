@@ -394,25 +394,71 @@ if (btnPreviewCv) {
 
 
 (function () {
-    var vinyls = document.querySelectorAll('.vinyl-wrap');
-    var panels = document.querySelectorAll('.vinyl-panel');
-    var zone = document.querySelector('.vinyl-panels');
-    var current = -1;
- 
-    vinyls.forEach(function (wrap, i) {
-      wrap.querySelector('.vinyl').addEventListener('click', function () {
-        current = (current === i) ? -1 : i;
-        vinyls.forEach(function (w, j) {
-          var on = j === current;
-          w.classList.toggle('is-open', on);
-          w.querySelector('.vinyl').setAttribute('aria-expanded', on);
-        });
-        panels.forEach(function (p, j) { p.classList.toggle('is-active', j === current); });
-        zone.classList.toggle('is-open', current !== -1);
-        if (current !== -1) fillNotes();
-      });
+  var vinyls = document.querySelectorAll('.vinyl-wrap');
+  var panels = document.querySelectorAll('.vinyl-panel');
+  var zone = document.querySelector('.vinyl-panels');
+  var NOTES = ['♪', '♫', '♩', '♬'];
+  var current = -1;
+
+  function fillNotes() {
+    document.querySelectorAll('.notes').forEach(function (el) {
+      var horizontal = el.classList.contains('notes--top') || el.classList.contains('notes--bottom');
+      var size = horizontal ? el.offsetWidth : el.offsetHeight;
+      var count = Math.max(2, Math.floor(size / 30));
+      var html = '';
+      for (var i = 0; i < count; i++) html += '<span>' + NOTES[i % 4] + '</span>';
+      el.innerHTML = html;
     });
- 
-    window.addEventListener('resize', fillNotes);
-    fillNotes();
-  })();
+  }
+
+  vinyls.forEach(function (wrap, i) {
+    wrap.querySelector('.vinyl').addEventListener('click', function () {
+      current = (current === i) ? -1 : i;
+      vinyls.forEach(function (w, j) {
+        var on = j === current;
+        w.classList.toggle('is-open', on);
+        w.querySelector('.vinyl').setAttribute('aria-expanded', on);
+      });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === current); });
+      if (zone) zone.classList.toggle('is-open', current !== -1);
+      if (current !== -1) fillNotes();
+    });
+  });
+
+  window.addEventListener('resize', fillNotes);
+  fillNotes();
+})();
+
+
+// ===================== LIGHTBOX (images des projets) =====================
+(function () {
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxClose = document.getElementById('lightbox-close');
+  if (!lightbox || !lightboxImg) return;
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest('.project-carousel img');
+    if (img) openLightbox(img.currentSrc || img.src, img.alt);
+  });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target !== lightboxImg) closeLightbox();
+  });
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+})();
