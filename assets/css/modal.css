@@ -561,7 +561,7 @@
 
 .contact-arrow {
   font-size: 16px;
-  color: var(--card-strong-item);
+  color: var(--card-item);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
