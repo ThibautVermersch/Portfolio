@@ -51,6 +51,9 @@ const translations = {
     title_keygen: "Générateur de mots de passe sécurisé",
     desc_keygen: "Générateur configurable de mots de passe sécurisés en Java avec la possibilité de choisir la longueur et d'exporter les mots de passe.",
     desc_portfolio: "Interface interactive inspirée d'une platine vinyle avec lecteur audio, thèmes persistants et internationalisation.",
+    cat_game_patterns: "JEUX • PATRONS DE CONCEPTION",
+    desc_space_invader: "Interface interactive inspirée du jeu Space Invader réalisée en groupe de 5 dans le cadre de mon cursus scolaire.",
+    tag_design_patterns: "Patrons de conception",
 
     // Onglet 04 : Parcours
     cv_open_new: "Ouvrir le CV dans un nouvel onglet ↗",
@@ -133,6 +136,9 @@ const translations = {
     title_keygen: "Secure Password Generator",
     desc_keygen: "Configurable Java password generator with custom length controls and password export capabilities.",
     desc_portfolio: "Interactive vinyl turntable inspired portfolio featuring an audio player, persistent themes, and localization.",
+    cat_game_patterns: "GAMES • DESIGN PATTERNS",
+    desc_space_invader: "Interactive interface inspired by Space Invaders, developed in a team of 5 as part of my computer science degree.",
+    tag_design_patterns: "Design Patterns",
 
     // Onglet 04 : Parcours
     cv_open_new: "Open resume in a new tab ↗",

@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Lora";
+    src: url(/assets/Font/Lora/Lora-VariableFont_wght.ttf) format("TrueType");
+}
     html {
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
@@ -13,6 +16,51 @@
     body {
         background-color: var(--bg-main);
         color: var(--text-main);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family: Lora;
         overflow-x: hidden;
     }
+    
+.github-calendar-box {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--card-item-bg);
+  border-radius: 12px;
+}
+
+.github-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.github-calendar-title {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.github-profile-link {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.github-profile-link:hover {
+  text-decoration: underline;
+}
+
+.github-chart-wrapper {
+  width: 100%;
+  overflow: hidden; /* Cache la partie décalée à gauche */
+  position: relative;
+}
+
+.github-chart-img {
+width: 135%; /* Agrandit l'image pour compenser le rognage */
+  margin-left: -35%; /* Décale vers la gauche (masque environ les 4 premiers mois) */
+  display: block;
+  filter: invert(0.92) hue-rotate(180deg);
+}
+
